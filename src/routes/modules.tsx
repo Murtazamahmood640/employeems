@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { modules, type Module } from "@/lib/modules";
-import { ArrowRight, Sparkles, Zap, Layers } from "lucide-react";
+import { ArrowRight, Sparkles, Layers } from "lucide-react";
 
 export const Route = createFileRoute("/modules")({
   head: () => ({
@@ -66,19 +66,14 @@ function ModulesPage() {
               <div className="absolute -inset-1 rounded-3xl opacity-0 transition-all duration-500 group-hover:opacity-20 blur-xl" style={{ background: m.accentHex }} />
               
               <div className="relative flex flex-col h-full p-8">
-                {/* Top section with icon and phase badge */}
+                {/* Top section with icon and category badge */}
                 <div className="flex items-start justify-between mb-6">
-                  <div className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-2xl" style={{ background: `linear-gradient(135deg, ${m.accentHex}, ${m.accentHex}cc)` }}>
-                    <m.icon className="h-7 w-7" />
+                  <div className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-2xl text-2xl font-bold" style={{ background: `linear-gradient(135deg, ${m.accentHex}, ${m.accentHex}cc)` }}>
+                    {m.name.charAt(0)}
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    <span className="rounded-full bg-gradient-to-r from-primary/10 to-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary/80 backdrop-blur-sm">
-                      {m.category}
-                    </span>
-                    <span className="rounded-full border border-border/50 bg-surface-elevated/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1">
-                      <Zap className="h-3 w-3" style={{ color: m.accentHex }} /> Phase {m.phase}
-                    </span>
-                  </div>
+                  <span className="rounded-full bg-gradient-to-r from-primary/10 to-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary/80 backdrop-blur-sm">
+                    {m.category}
+                  </span>
                 </div>
                 
                 {/* Content */}

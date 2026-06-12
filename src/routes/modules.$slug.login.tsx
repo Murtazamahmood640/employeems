@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, Lock, Mail, Sparkles, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, Lock, Mail, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { getModule, type Module } from "@/lib/modules";
 
@@ -57,10 +57,10 @@ function ModuleLogin() {
           </Link>
         </div>
 
-        <div className="relative">
-          <div className="inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-background/10 p-3 backdrop-blur">
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-background/15">
-              <mod.icon className="h-6 w-6" />
+        <div className="relative space-y-8 animate-fade-in-up">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-xl hover:bg-white/15 transition-all duration-300">
+            <div className="grid h-14 w-14 place-items-center rounded-xl bg-white/20 shadow-lg">
+              <mod.icon className="h-7 w-7" />
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-white/70 font-semibold">ByThawkHR · {mod.category}</p>
@@ -92,8 +92,11 @@ function ModuleLogin() {
           </div>
         </div>
 
-        <div className="relative text-xs text-white/60">
-          One ByThawkHR account unlocks every module you have access to. Single sign-on, instant switching.
+        <div className="relative text-xs text-white/60 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+          <div className="flex items-center gap-2">
+            <Zap className="h-3 w-3" />
+            One ByThawkHR account unlocks every module. Instant switching, single sign-on.
+          </div>
         </div>
       </aside>
 
@@ -104,9 +107,9 @@ function ModuleLogin() {
             <Link to="/modules/$slug" params={{ slug: mod.slug }} className="inline-flex items-center gap-2 text-sm text-muted-foreground">
               <ArrowLeft className="h-4 w-4" /> Back to {mod.name}
             </Link>
-            <div className="mt-4 flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-xl text-white" style={{ background: mod.accentHex }}>
-                <mod.icon className="h-5 w-5" />
+            <div className="mt-4 flex items-center gap-3 p-4 rounded-2xl border border-border bg-surface-elevated/50">
+              <div className="grid h-12 w-12 place-items-center rounded-xl text-white font-bold" style={{ background: `linear-gradient(135deg, ${mod.accentHex}, ${mod.accentHex}cc)` }}>
+                <mod.icon className="h-6 w-6" />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{mod.category}</p>

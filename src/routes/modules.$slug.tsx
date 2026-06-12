@@ -1,22 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check, ChevronRight, LogIn, Sparkles } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, LogIn, Sparkles, Zap, Layers, Shield, Rocket, BarChart3 } from "lucide-react";
 import { getModule, modules, type Module } from "@/lib/modules";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/modules/$slug")({
-  loader: ({ params }): { mod: Module } => {
-    const mod = getModule(params.slug);
-    if (!mod) throw notFound();
-    return { mod };
-  },
-  head: ({ loaderData }) => {
-    const m = loaderData?.mod;
+  head: ({ params }) => {
+    const mod = modules.find(m => m.slug === params.slug);
     return {
       meta: [
-        { title: `${m?.name ?? "Module"} — ByThawkHR` },
-        { name: "description", content: m?.description ?? "ByThawkHR module" },
-        { property: "og:title", content: `${m?.name} — ByThawkHR` },
-        { property: "og:description", content: m?.description },
-        { property: "og:image", content: m?.image },
+        { title: `${mod?.name ?? "Module"} — ByThawkHR` },
       ],
     };
   },
@@ -31,7 +23,13 @@ export const Route = createFileRoute("/modules/$slug")({
 
 function ModuleDetail() {
   const { mod } = Route.useLoaderData() as { mod: Module };
-  const others = modules.filter((m) => m.slug !== mod.slug && m.category === mod.category).slice(0, 3);
+  
+  // Re-fetch module and others on client to avoid serialization issues with icons
+  const allModules = modules;
+  const currentMod = allModules.find(m => m.slug === mod.slug);
+  const others = allModules.filter((m) => m.slug !== mod.slug && m.category === mod.category).slice(0, 3);
+
+  if (!currentMod) return null;
 
   return (
     <>
@@ -46,14 +44,20 @@ function ModuleDetail() {
             <span className="text-foreground">{mod.name}</span>
           </nav>
           <div className="mt-8 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-            <div>
-              <div className="flex items-center gap-3">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl text-white shadow-[var(--shadow-soft)]" style={{ background: `linear-gradient(135deg, ${mod.accentHex}, ${mod.accentHex}cc)` }}>
-                  <mod.icon className="h-7 w-7" />
+            <div className="animate-fade-in-left space-y-6">
+              <div className="flex items-center gap-4 group">
+                <div className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ background: `linear-gradient(135deg, ${currentMod.accentHex}, ${currentMod.accentHex}cc)` }}>
+                  <currentMod.icon className="h-8 w-8" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{mod.category} · Phase {mod.phase}</p>
-                  <p className="text-sm font-semibold" style={{ color: mod.accentHex }}>{mod.tagline}</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+                    <span>{currentMod.category}</span>
+                    <span className="flex items-center gap-1" style={{ color: currentMod.accentHex }}>
+                      <Zap className="h-3 w-3" />
+                      Phase {currentMod.phase}
+                    </span>
+                  </p>
+                  <p className="text-sm font-semibold mt-1" style={{ color: currentMod.accentHex }}>{currentMod.tagline}</p>
                 </div>
               </div>
               <h1 className="mt-6 text-5xl font-extrabold tracking-tight sm:text-6xl">{mod.name}</h1>
@@ -147,13 +151,25 @@ function ModuleDetail() {
 
       {/* RELATED */}
       {others.length > 0 && (
-        <section className="container-x pb-24">
-          <h2 className="text-2xl font-bold">More in {mod.category}</h2>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
-            {others.map((o) => (
-              <Link key={o.slug} to="/modules/$slug" params={{ slug: o.slug }} className="card-soft group p-6 transition-all hover:-translate-y-1">
-                <div className="grid h-11 w-11 place-items-center rounded-xl text-white" style={{ background: o.accentHex }}>
-                  <o.icon className="h-5 w-5" />
+        <section className="container-x py-24 border-t border-border/50">
+          <div className="mb-12 animate-fade-in-up">
+            <span className="eyebrow"><Sparkles className="h-3.5 w-3.5" style={{ color: currentMod.accentHex }} /> Explore more</span>
+            <h2 className="mt-4 text-4xl font-bold">More in <span className="text-transparent bg-gradient-to-r bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${currentMod.accentHex}, ${currentMod.accentHex}cc)` }}>{currentMod.category}</span></h2>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-3">
+            {others.map((o, idx) => {
+              const OtherIcon = o.icon;
+              return (
+              <Link 
+                key={o.slug} 
+                to="/modules/$slug" 
+                params={{ slug: o.slug }} 
+                className="group card-soft p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl border border-border/50 hover:border-primary/40 animate-scale-in"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className="grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg group-hover:scale-125 transition-transform duration-300" style={{ background: `linear-gradient(135deg, ${o.accentHex}, ${o.accentHex}cc)` }}>
+                  <OtherIcon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 font-semibold">{o.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{o.tagline}</p>
