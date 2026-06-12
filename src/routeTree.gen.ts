@@ -46,7 +46,6 @@ import { Route as ModulesAssetsRouteImport } from './routes/modules.assets'
 import { Route as ModulesApprovalsRouteImport } from './routes/modules.approvals'
 import { Route as ModulesAnalyticsRouteImport } from './routes/modules.analytics'
 import { Route as ModulesAdminRouteImport } from './routes/modules.admin'
-import { Route as ModulesSlugRouteImport } from './routes/modules.$slug'
 import { Route as ModulesSlugLoginRouteImport } from './routes/modules.$slug.login'
 
 const TermsRoute = TermsRouteImport.update({
@@ -234,15 +233,10 @@ const ModulesAdminRoute = ModulesAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => ModulesRoute,
 } as any)
-const ModulesSlugRoute = ModulesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ModulesRoute,
-} as any)
 const ModulesSlugLoginRoute = ModulesSlugLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => ModulesSlugRoute,
+  id: '/$slug/login',
+  path: '/$slug/login',
+  getParentRoute: () => ModulesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -262,7 +256,6 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/$slug': typeof ModulesSlugRouteWithChildren
   '/modules/admin': typeof ModulesAdminRoute
   '/modules/analytics': typeof ModulesAnalyticsRoute
   '/modules/approvals': typeof ModulesApprovalsRoute
@@ -303,7 +296,6 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/$slug': typeof ModulesSlugRouteWithChildren
   '/modules/admin': typeof ModulesAdminRoute
   '/modules/analytics': typeof ModulesAnalyticsRoute
   '/modules/approvals': typeof ModulesApprovalsRoute
@@ -345,7 +337,6 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/$slug': typeof ModulesSlugRouteWithChildren
   '/modules/admin': typeof ModulesAdminRoute
   '/modules/analytics': typeof ModulesAnalyticsRoute
   '/modules/approvals': typeof ModulesApprovalsRoute
@@ -388,7 +379,6 @@ export interface FileRouteTypes {
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/$slug'
     | '/modules/admin'
     | '/modules/analytics'
     | '/modules/approvals'
@@ -429,7 +419,6 @@ export interface FileRouteTypes {
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/$slug'
     | '/modules/admin'
     | '/modules/analytics'
     | '/modules/approvals'
@@ -470,7 +459,6 @@ export interface FileRouteTypes {
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/$slug'
     | '/modules/admin'
     | '/modules/analytics'
     | '/modules/approvals'
@@ -775,37 +763,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModulesAdminRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/$slug': {
-      id: '/modules/$slug'
-      path: '/$slug'
-      fullPath: '/modules/$slug'
-      preLoaderRoute: typeof ModulesSlugRouteImport
-      parentRoute: typeof ModulesRoute
-    }
     '/modules/$slug/login': {
       id: '/modules/$slug/login'
-      path: '/login'
+      path: '/$slug/login'
       fullPath: '/modules/$slug/login'
       preLoaderRoute: typeof ModulesSlugLoginRouteImport
-      parentRoute: typeof ModulesSlugRoute
+      parentRoute: typeof ModulesRoute
     }
   }
 }
 
-interface ModulesSlugRouteChildren {
-  ModulesSlugLoginRoute: typeof ModulesSlugLoginRoute
-}
-
-const ModulesSlugRouteChildren: ModulesSlugRouteChildren = {
-  ModulesSlugLoginRoute: ModulesSlugLoginRoute,
-}
-
-const ModulesSlugRouteWithChildren = ModulesSlugRoute._addFileChildren(
-  ModulesSlugRouteChildren,
-)
-
 interface ModulesRouteChildren {
-  ModulesSlugRoute: typeof ModulesSlugRouteWithChildren
   ModulesAdminRoute: typeof ModulesAdminRoute
   ModulesAnalyticsRoute: typeof ModulesAnalyticsRoute
   ModulesApprovalsRoute: typeof ModulesApprovalsRoute
@@ -827,10 +795,10 @@ interface ModulesRouteChildren {
   ModulesSurveysRoute: typeof ModulesSurveysRoute
   ModulesTrainingRoute: typeof ModulesTrainingRoute
   ModulesTravelRoute: typeof ModulesTravelRoute
+  ModulesSlugLoginRoute: typeof ModulesSlugLoginRoute
 }
 
 const ModulesRouteChildren: ModulesRouteChildren = {
-  ModulesSlugRoute: ModulesSlugRouteWithChildren,
   ModulesAdminRoute: ModulesAdminRoute,
   ModulesAnalyticsRoute: ModulesAnalyticsRoute,
   ModulesApprovalsRoute: ModulesApprovalsRoute,
@@ -852,6 +820,7 @@ const ModulesRouteChildren: ModulesRouteChildren = {
   ModulesSurveysRoute: ModulesSurveysRoute,
   ModulesTrainingRoute: ModulesTrainingRoute,
   ModulesTravelRoute: ModulesTravelRoute,
+  ModulesSlugLoginRoute: ModulesSlugLoginRoute,
 }
 
 const ModulesRouteWithChildren =
