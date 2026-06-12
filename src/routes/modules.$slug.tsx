@@ -59,12 +59,8 @@ function ModuleDetail() {
                   {currentMod.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                    <span>{currentMod.category}</span>
-                    <span className="flex items-center gap-1" style={{ color: currentMod.accentHex }}>
-                      <Zap className="h-3 w-3" />
-                      Phase {currentMod.phase}
-                    </span>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    {currentMod.category}
                   </p>
                   <p className="text-sm font-semibold mt-1" style={{ color: currentMod.accentHex }}>{currentMod.tagline}</p>
                 </div>
