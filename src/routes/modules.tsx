@@ -56,8 +56,7 @@ function ModulesPage() {
           {list.map((m, idx) => (
             <Link
               key={m.slug}
-              to="/modules/$slug"
-              params={{ slug: m.slug }}
+              to={`/modules/${m.slug}`}
               className="group relative overflow-hidden rounded-3xl border border-border bg-background backdrop-blur-md transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:border-primary/40 animate-scale-in"
               style={{ animationDelay: `${idx * 50}ms` }}
             >
