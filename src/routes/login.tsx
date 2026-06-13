@@ -45,7 +45,7 @@ function Login() {
           <div className="w-full max-w-sm">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back</h1>
-              <p className="text-muted-foreground">Sign in to access 21 powerful HR modules designed to streamline your workforce management.</p>
+              <p className="text-muted-foreground">Sign in to access 20 powerful HR modules designed to streamline your workforce management.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -109,7 +109,7 @@ function Login() {
             <div className="mt-8 pt-6 border-t border-border">
               <p className="text-xs text-muted-foreground mb-3">Need module-specific access?</p>
               <Link to="/modules" className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition">
-                Browse all 21 modules <ArrowRight className="h-3.5 w-3.5" />
+                Browse all modules <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
@@ -128,7 +128,7 @@ function Login() {
 
           <div>
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              Complete HR Suite with 21 Modules
+              Complete HR Suite with 20 Modules
             </h2>
             <p className="text-lg text-muted-foreground mb-10">
               From People Management to Payroll, we've built everything you need to run an efficient, compliant, and engaged workforce.
@@ -174,7 +174,7 @@ function Login() {
 
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-border/50">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">21</div>
+                <div className="text-2xl font-bold text-primary">20</div>
                 <p className="text-xs text-muted-foreground mt-1">Modules</p>
               </div>
               <div className="text-center">

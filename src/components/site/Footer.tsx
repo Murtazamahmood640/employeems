@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-
+import logo from '../../../public/logo.png';
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
@@ -7,8 +7,8 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-5">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground font-bold">B</span>
-              <span className="text-lg font-bold tracking-tight">ByThawk<span className="text-accent">HR</span></span>
+                          <img src={logo} width={200}/>
+
             </div>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               One workspace for your people, processes, and payroll — built for modern teams.

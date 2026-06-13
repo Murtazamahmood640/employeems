@@ -12,11 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SecurityRouteImport } from './routes/security'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as ModuleDetailRouteImport } from './routes/module-detail'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -25,28 +27,17 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ModulesTravelRouteImport } from './routes/modules.travel'
-import { Route as ModulesTrainingRouteImport } from './routes/modules.training'
-import { Route as ModulesSurveysRouteImport } from './routes/modules.surveys'
-import { Route as ModulesShiftsRouteImport } from './routes/modules.shifts'
-import { Route as ModulesRecruitRouteImport } from './routes/modules.recruit'
-import { Route as ModulesProjectsRouteImport } from './routes/modules.projects'
-import { Route as ModulesPerformanceRouteImport } from './routes/modules.performance'
-import { Route as ModulesPeopleRouteImport } from './routes/modules.people'
-import { Route as ModulesPayrollRouteImport } from './routes/modules.payroll'
-import { Route as ModulesLeaveRouteImport } from './routes/modules.leave'
-import { Route as ModulesGoalsRouteImport } from './routes/modules.goals'
-import { Route as ModulesExpensesRouteImport } from './routes/modules.expenses'
-import { Route as ModulesExitRouteImport } from './routes/modules.exit'
-import { Route as ModulesDeskRouteImport } from './routes/modules.desk'
-import { Route as ModulesComplianceRouteImport } from './routes/modules.compliance'
-import { Route as ModulesCliqRouteImport } from './routes/modules.cliq'
-import { Route as ModulesAttendanceRouteImport } from './routes/modules.attendance'
-import { Route as ModulesAssetsRouteImport } from './routes/modules.assets'
-import { Route as ModulesApprovalsRouteImport } from './routes/modules.approvals'
-import { Route as ModulesAnalyticsRouteImport } from './routes/modules.analytics'
-import { Route as ModulesAdminRouteImport } from './routes/modules.admin'
-import { Route as ModulesSlugLoginRouteImport } from './routes/modules.$slug.login'
+import { Route as ModulesIndexRouteImport } from './routes/modules.index'
+import { Route as ModulesSlugRouteImport } from './routes/modules.$slug'
+import { Route as ModulesProjectsDashboardRouteImport } from './routes/modules.projects.dashboard'
+import { Route as ModulesPeopleDashboardRouteImport } from './routes/modules.people.dashboard'
+import { Route as ModulesPayrollDashboardRouteImport } from './routes/modules.payroll.dashboard'
+import { Route as ModulesDeskDashboardRouteImport } from './routes/modules.desk.dashboard'
+import { Route as ModulesSlugLoginRouteImport } from './routes/modules.$slug_.login'
+import { Route as ModulesPeopleDashboardIndexRouteImport } from './routes/modules.people.dashboard.index'
+import { Route as ModulesPeopleDashboardLeaveRouteImport } from './routes/modules.people.dashboard.leave'
+import { Route as ModulesPeopleDashboardDirectoryRouteImport } from './routes/modules.people.dashboard.directory'
+import { Route as ModulesPeopleDashboardAttendanceRouteImport } from './routes/modules.people.dashboard.attendance'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -61,6 +52,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -86,6 +82,11 @@ const ModuleDetailRoute = ModuleDetailRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsRoute = IntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -128,116 +129,66 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ModulesTravelRoute = ModulesTravelRouteImport.update({
-  id: '/travel',
-  path: '/travel',
+const ModulesIndexRoute = ModulesIndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => ModulesRoute,
 } as any)
-const ModulesTrainingRoute = ModulesTrainingRouteImport.update({
-  id: '/training',
-  path: '/training',
+const ModulesSlugRoute = ModulesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
   getParentRoute: () => ModulesRoute,
 } as any)
-const ModulesSurveysRoute = ModulesSurveysRouteImport.update({
-  id: '/surveys',
-  path: '/surveys',
+const ModulesProjectsDashboardRoute =
+  ModulesProjectsDashboardRouteImport.update({
+    id: '/projects/dashboard',
+    path: '/projects/dashboard',
+    getParentRoute: () => ModulesRoute,
+  } as any)
+const ModulesPeopleDashboardRoute = ModulesPeopleDashboardRouteImport.update({
+  id: '/people/dashboard',
+  path: '/people/dashboard',
   getParentRoute: () => ModulesRoute,
 } as any)
-const ModulesShiftsRoute = ModulesShiftsRouteImport.update({
-  id: '/shifts',
-  path: '/shifts',
+const ModulesPayrollDashboardRoute = ModulesPayrollDashboardRouteImport.update({
+  id: '/payroll/dashboard',
+  path: '/payroll/dashboard',
   getParentRoute: () => ModulesRoute,
 } as any)
-const ModulesRecruitRoute = ModulesRecruitRouteImport.update({
-  id: '/recruit',
-  path: '/recruit',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesProjectsRoute = ModulesProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesPerformanceRoute = ModulesPerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesPeopleRoute = ModulesPeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesPayrollRoute = ModulesPayrollRouteImport.update({
-  id: '/payroll',
-  path: '/payroll',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesLeaveRoute = ModulesLeaveRouteImport.update({
-  id: '/leave',
-  path: '/leave',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesGoalsRoute = ModulesGoalsRouteImport.update({
-  id: '/goals',
-  path: '/goals',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesExpensesRoute = ModulesExpensesRouteImport.update({
-  id: '/expenses',
-  path: '/expenses',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesExitRoute = ModulesExitRouteImport.update({
-  id: '/exit',
-  path: '/exit',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesDeskRoute = ModulesDeskRouteImport.update({
-  id: '/desk',
-  path: '/desk',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesComplianceRoute = ModulesComplianceRouteImport.update({
-  id: '/compliance',
-  path: '/compliance',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesCliqRoute = ModulesCliqRouteImport.update({
-  id: '/cliq',
-  path: '/cliq',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesAttendanceRoute = ModulesAttendanceRouteImport.update({
-  id: '/attendance',
-  path: '/attendance',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesAssetsRoute = ModulesAssetsRouteImport.update({
-  id: '/assets',
-  path: '/assets',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesApprovalsRoute = ModulesApprovalsRouteImport.update({
-  id: '/approvals',
-  path: '/approvals',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesAnalyticsRoute = ModulesAnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => ModulesRoute,
-} as any)
-const ModulesAdminRoute = ModulesAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const ModulesDeskDashboardRoute = ModulesDeskDashboardRouteImport.update({
+  id: '/desk/dashboard',
+  path: '/desk/dashboard',
   getParentRoute: () => ModulesRoute,
 } as any)
 const ModulesSlugLoginRoute = ModulesSlugLoginRouteImport.update({
-  id: '/$slug/login',
+  id: '/$slug_/login',
   path: '/$slug/login',
   getParentRoute: () => ModulesRoute,
 } as any)
+const ModulesPeopleDashboardIndexRoute =
+  ModulesPeopleDashboardIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ModulesPeopleDashboardRoute,
+  } as any)
+const ModulesPeopleDashboardLeaveRoute =
+  ModulesPeopleDashboardLeaveRouteImport.update({
+    id: '/leave',
+    path: '/leave',
+    getParentRoute: () => ModulesPeopleDashboardRoute,
+  } as any)
+const ModulesPeopleDashboardDirectoryRoute =
+  ModulesPeopleDashboardDirectoryRouteImport.update({
+    id: '/directory',
+    path: '/directory',
+    getParentRoute: () => ModulesPeopleDashboardRoute,
+  } as any)
+const ModulesPeopleDashboardAttendanceRoute =
+  ModulesPeopleDashboardAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => ModulesPeopleDashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -248,36 +199,27 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/integrations': typeof IntegrationsRoute
   '/login': typeof LoginRoute
   '/module-detail': typeof ModuleDetailRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/admin': typeof ModulesAdminRoute
-  '/modules/analytics': typeof ModulesAnalyticsRoute
-  '/modules/approvals': typeof ModulesApprovalsRoute
-  '/modules/assets': typeof ModulesAssetsRoute
-  '/modules/attendance': typeof ModulesAttendanceRoute
-  '/modules/cliq': typeof ModulesCliqRoute
-  '/modules/compliance': typeof ModulesComplianceRoute
-  '/modules/desk': typeof ModulesDeskRoute
-  '/modules/exit': typeof ModulesExitRoute
-  '/modules/expenses': typeof ModulesExpensesRoute
-  '/modules/goals': typeof ModulesGoalsRoute
-  '/modules/leave': typeof ModulesLeaveRoute
-  '/modules/payroll': typeof ModulesPayrollRoute
-  '/modules/people': typeof ModulesPeopleRoute
-  '/modules/performance': typeof ModulesPerformanceRoute
-  '/modules/projects': typeof ModulesProjectsRoute
-  '/modules/recruit': typeof ModulesRecruitRoute
-  '/modules/shifts': typeof ModulesShiftsRoute
-  '/modules/surveys': typeof ModulesSurveysRoute
-  '/modules/training': typeof ModulesTrainingRoute
-  '/modules/travel': typeof ModulesTravelRoute
+  '/modules/$slug': typeof ModulesSlugRoute
+  '/modules/': typeof ModulesIndexRoute
   '/modules/$slug/login': typeof ModulesSlugLoginRoute
+  '/modules/desk/dashboard': typeof ModulesDeskDashboardRoute
+  '/modules/payroll/dashboard': typeof ModulesPayrollDashboardRoute
+  '/modules/people/dashboard': typeof ModulesPeopleDashboardRouteWithChildren
+  '/modules/projects/dashboard': typeof ModulesProjectsDashboardRoute
+  '/modules/people/dashboard/attendance': typeof ModulesPeopleDashboardAttendanceRoute
+  '/modules/people/dashboard/directory': typeof ModulesPeopleDashboardDirectoryRoute
+  '/modules/people/dashboard/leave': typeof ModulesPeopleDashboardLeaveRoute
+  '/modules/people/dashboard/': typeof ModulesPeopleDashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -288,36 +230,25 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/integrations': typeof IntegrationsRoute
   '/login': typeof LoginRoute
   '/module-detail': typeof ModuleDetailRoute
-  '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/admin': typeof ModulesAdminRoute
-  '/modules/analytics': typeof ModulesAnalyticsRoute
-  '/modules/approvals': typeof ModulesApprovalsRoute
-  '/modules/assets': typeof ModulesAssetsRoute
-  '/modules/attendance': typeof ModulesAttendanceRoute
-  '/modules/cliq': typeof ModulesCliqRoute
-  '/modules/compliance': typeof ModulesComplianceRoute
-  '/modules/desk': typeof ModulesDeskRoute
-  '/modules/exit': typeof ModulesExitRoute
-  '/modules/expenses': typeof ModulesExpensesRoute
-  '/modules/goals': typeof ModulesGoalsRoute
-  '/modules/leave': typeof ModulesLeaveRoute
-  '/modules/payroll': typeof ModulesPayrollRoute
-  '/modules/people': typeof ModulesPeopleRoute
-  '/modules/performance': typeof ModulesPerformanceRoute
-  '/modules/projects': typeof ModulesProjectsRoute
-  '/modules/recruit': typeof ModulesRecruitRoute
-  '/modules/shifts': typeof ModulesShiftsRoute
-  '/modules/surveys': typeof ModulesSurveysRoute
-  '/modules/training': typeof ModulesTrainingRoute
-  '/modules/travel': typeof ModulesTravelRoute
+  '/modules/$slug': typeof ModulesSlugRoute
+  '/modules': typeof ModulesIndexRoute
   '/modules/$slug/login': typeof ModulesSlugLoginRoute
+  '/modules/desk/dashboard': typeof ModulesDeskDashboardRoute
+  '/modules/payroll/dashboard': typeof ModulesPayrollDashboardRoute
+  '/modules/projects/dashboard': typeof ModulesProjectsDashboardRoute
+  '/modules/people/dashboard/attendance': typeof ModulesPeopleDashboardAttendanceRoute
+  '/modules/people/dashboard/directory': typeof ModulesPeopleDashboardDirectoryRoute
+  '/modules/people/dashboard/leave': typeof ModulesPeopleDashboardLeaveRoute
+  '/modules/people/dashboard': typeof ModulesPeopleDashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -329,36 +260,27 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/integrations': typeof IntegrationsRoute
   '/login': typeof LoginRoute
   '/module-detail': typeof ModuleDetailRoute
   '/modules': typeof ModulesRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
   '/signup': typeof SignupRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
-  '/modules/admin': typeof ModulesAdminRoute
-  '/modules/analytics': typeof ModulesAnalyticsRoute
-  '/modules/approvals': typeof ModulesApprovalsRoute
-  '/modules/assets': typeof ModulesAssetsRoute
-  '/modules/attendance': typeof ModulesAttendanceRoute
-  '/modules/cliq': typeof ModulesCliqRoute
-  '/modules/compliance': typeof ModulesComplianceRoute
-  '/modules/desk': typeof ModulesDeskRoute
-  '/modules/exit': typeof ModulesExitRoute
-  '/modules/expenses': typeof ModulesExpensesRoute
-  '/modules/goals': typeof ModulesGoalsRoute
-  '/modules/leave': typeof ModulesLeaveRoute
-  '/modules/payroll': typeof ModulesPayrollRoute
-  '/modules/people': typeof ModulesPeopleRoute
-  '/modules/performance': typeof ModulesPerformanceRoute
-  '/modules/projects': typeof ModulesProjectsRoute
-  '/modules/recruit': typeof ModulesRecruitRoute
-  '/modules/shifts': typeof ModulesShiftsRoute
-  '/modules/surveys': typeof ModulesSurveysRoute
-  '/modules/training': typeof ModulesTrainingRoute
-  '/modules/travel': typeof ModulesTravelRoute
-  '/modules/$slug/login': typeof ModulesSlugLoginRoute
+  '/modules/$slug': typeof ModulesSlugRoute
+  '/modules/': typeof ModulesIndexRoute
+  '/modules/$slug_/login': typeof ModulesSlugLoginRoute
+  '/modules/desk/dashboard': typeof ModulesDeskDashboardRoute
+  '/modules/payroll/dashboard': typeof ModulesPayrollDashboardRoute
+  '/modules/people/dashboard': typeof ModulesPeopleDashboardRouteWithChildren
+  '/modules/projects/dashboard': typeof ModulesProjectsDashboardRoute
+  '/modules/people/dashboard/attendance': typeof ModulesPeopleDashboardAttendanceRoute
+  '/modules/people/dashboard/directory': typeof ModulesPeopleDashboardDirectoryRoute
+  '/modules/people/dashboard/leave': typeof ModulesPeopleDashboardLeaveRoute
+  '/modules/people/dashboard/': typeof ModulesPeopleDashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -371,36 +293,27 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/forgot-password'
+    | '/integrations'
     | '/login'
     | '/module-detail'
     | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/security'
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/admin'
-    | '/modules/analytics'
-    | '/modules/approvals'
-    | '/modules/assets'
-    | '/modules/attendance'
-    | '/modules/cliq'
-    | '/modules/compliance'
-    | '/modules/desk'
-    | '/modules/exit'
-    | '/modules/expenses'
-    | '/modules/goals'
-    | '/modules/leave'
-    | '/modules/payroll'
-    | '/modules/people'
-    | '/modules/performance'
-    | '/modules/projects'
-    | '/modules/recruit'
-    | '/modules/shifts'
-    | '/modules/surveys'
-    | '/modules/training'
-    | '/modules/travel'
+    | '/modules/$slug'
+    | '/modules/'
     | '/modules/$slug/login'
+    | '/modules/desk/dashboard'
+    | '/modules/payroll/dashboard'
+    | '/modules/people/dashboard'
+    | '/modules/projects/dashboard'
+    | '/modules/people/dashboard/attendance'
+    | '/modules/people/dashboard/directory'
+    | '/modules/people/dashboard/leave'
+    | '/modules/people/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -411,36 +324,25 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/forgot-password'
+    | '/integrations'
     | '/login'
     | '/module-detail'
-    | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/security'
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/admin'
-    | '/modules/analytics'
-    | '/modules/approvals'
-    | '/modules/assets'
-    | '/modules/attendance'
-    | '/modules/cliq'
-    | '/modules/compliance'
-    | '/modules/desk'
-    | '/modules/exit'
-    | '/modules/expenses'
-    | '/modules/goals'
-    | '/modules/leave'
-    | '/modules/payroll'
-    | '/modules/people'
-    | '/modules/performance'
-    | '/modules/projects'
-    | '/modules/recruit'
-    | '/modules/shifts'
-    | '/modules/surveys'
-    | '/modules/training'
-    | '/modules/travel'
+    | '/modules/$slug'
+    | '/modules'
     | '/modules/$slug/login'
+    | '/modules/desk/dashboard'
+    | '/modules/payroll/dashboard'
+    | '/modules/projects/dashboard'
+    | '/modules/people/dashboard/attendance'
+    | '/modules/people/dashboard/directory'
+    | '/modules/people/dashboard/leave'
+    | '/modules/people/dashboard'
   id:
     | '__root__'
     | '/'
@@ -451,36 +353,27 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/forgot-password'
+    | '/integrations'
     | '/login'
     | '/module-detail'
     | '/modules'
     | '/pricing'
     | '/privacy'
+    | '/security'
     | '/signup'
     | '/sitemap.xml'
     | '/terms'
-    | '/modules/admin'
-    | '/modules/analytics'
-    | '/modules/approvals'
-    | '/modules/assets'
-    | '/modules/attendance'
-    | '/modules/cliq'
-    | '/modules/compliance'
-    | '/modules/desk'
-    | '/modules/exit'
-    | '/modules/expenses'
-    | '/modules/goals'
-    | '/modules/leave'
-    | '/modules/payroll'
-    | '/modules/people'
-    | '/modules/performance'
-    | '/modules/projects'
-    | '/modules/recruit'
-    | '/modules/shifts'
-    | '/modules/surveys'
-    | '/modules/training'
-    | '/modules/travel'
-    | '/modules/$slug/login'
+    | '/modules/$slug'
+    | '/modules/'
+    | '/modules/$slug_/login'
+    | '/modules/desk/dashboard'
+    | '/modules/payroll/dashboard'
+    | '/modules/people/dashboard'
+    | '/modules/projects/dashboard'
+    | '/modules/people/dashboard/attendance'
+    | '/modules/people/dashboard/directory'
+    | '/modules/people/dashboard/leave'
+    | '/modules/people/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -492,11 +385,13 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  IntegrationsRoute: typeof IntegrationsRoute
   LoginRoute: typeof LoginRoute
   ModuleDetailRoute: typeof ModuleDetailRoute
   ModulesRoute: typeof ModulesRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  SecurityRoute: typeof SecurityRoute
   SignupRoute: typeof SignupRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -523,6 +418,13 @@ declare module '@tanstack/react-router' {
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -558,6 +460,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations': {
+      id: '/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof IntegrationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forgot-password': {
@@ -616,211 +525,125 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/modules/travel': {
-      id: '/modules/travel'
-      path: '/travel'
-      fullPath: '/modules/travel'
-      preLoaderRoute: typeof ModulesTravelRouteImport
+    '/modules/': {
+      id: '/modules/'
+      path: '/'
+      fullPath: '/modules/'
+      preLoaderRoute: typeof ModulesIndexRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/training': {
-      id: '/modules/training'
-      path: '/training'
-      fullPath: '/modules/training'
-      preLoaderRoute: typeof ModulesTrainingRouteImport
+    '/modules/$slug': {
+      id: '/modules/$slug'
+      path: '/$slug'
+      fullPath: '/modules/$slug'
+      preLoaderRoute: typeof ModulesSlugRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/surveys': {
-      id: '/modules/surveys'
-      path: '/surveys'
-      fullPath: '/modules/surveys'
-      preLoaderRoute: typeof ModulesSurveysRouteImport
+    '/modules/projects/dashboard': {
+      id: '/modules/projects/dashboard'
+      path: '/projects/dashboard'
+      fullPath: '/modules/projects/dashboard'
+      preLoaderRoute: typeof ModulesProjectsDashboardRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/shifts': {
-      id: '/modules/shifts'
-      path: '/shifts'
-      fullPath: '/modules/shifts'
-      preLoaderRoute: typeof ModulesShiftsRouteImport
+    '/modules/people/dashboard': {
+      id: '/modules/people/dashboard'
+      path: '/people/dashboard'
+      fullPath: '/modules/people/dashboard'
+      preLoaderRoute: typeof ModulesPeopleDashboardRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/recruit': {
-      id: '/modules/recruit'
-      path: '/recruit'
-      fullPath: '/modules/recruit'
-      preLoaderRoute: typeof ModulesRecruitRouteImport
+    '/modules/payroll/dashboard': {
+      id: '/modules/payroll/dashboard'
+      path: '/payroll/dashboard'
+      fullPath: '/modules/payroll/dashboard'
+      preLoaderRoute: typeof ModulesPayrollDashboardRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/projects': {
-      id: '/modules/projects'
-      path: '/projects'
-      fullPath: '/modules/projects'
-      preLoaderRoute: typeof ModulesProjectsRouteImport
+    '/modules/desk/dashboard': {
+      id: '/modules/desk/dashboard'
+      path: '/desk/dashboard'
+      fullPath: '/modules/desk/dashboard'
+      preLoaderRoute: typeof ModulesDeskDashboardRouteImport
       parentRoute: typeof ModulesRoute
     }
-    '/modules/performance': {
-      id: '/modules/performance'
-      path: '/performance'
-      fullPath: '/modules/performance'
-      preLoaderRoute: typeof ModulesPerformanceRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/people': {
-      id: '/modules/people'
-      path: '/people'
-      fullPath: '/modules/people'
-      preLoaderRoute: typeof ModulesPeopleRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/payroll': {
-      id: '/modules/payroll'
-      path: '/payroll'
-      fullPath: '/modules/payroll'
-      preLoaderRoute: typeof ModulesPayrollRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/leave': {
-      id: '/modules/leave'
-      path: '/leave'
-      fullPath: '/modules/leave'
-      preLoaderRoute: typeof ModulesLeaveRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/goals': {
-      id: '/modules/goals'
-      path: '/goals'
-      fullPath: '/modules/goals'
-      preLoaderRoute: typeof ModulesGoalsRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/expenses': {
-      id: '/modules/expenses'
-      path: '/expenses'
-      fullPath: '/modules/expenses'
-      preLoaderRoute: typeof ModulesExpensesRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/exit': {
-      id: '/modules/exit'
-      path: '/exit'
-      fullPath: '/modules/exit'
-      preLoaderRoute: typeof ModulesExitRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/desk': {
-      id: '/modules/desk'
-      path: '/desk'
-      fullPath: '/modules/desk'
-      preLoaderRoute: typeof ModulesDeskRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/compliance': {
-      id: '/modules/compliance'
-      path: '/compliance'
-      fullPath: '/modules/compliance'
-      preLoaderRoute: typeof ModulesComplianceRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/cliq': {
-      id: '/modules/cliq'
-      path: '/cliq'
-      fullPath: '/modules/cliq'
-      preLoaderRoute: typeof ModulesCliqRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/attendance': {
-      id: '/modules/attendance'
-      path: '/attendance'
-      fullPath: '/modules/attendance'
-      preLoaderRoute: typeof ModulesAttendanceRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/assets': {
-      id: '/modules/assets'
-      path: '/assets'
-      fullPath: '/modules/assets'
-      preLoaderRoute: typeof ModulesAssetsRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/approvals': {
-      id: '/modules/approvals'
-      path: '/approvals'
-      fullPath: '/modules/approvals'
-      preLoaderRoute: typeof ModulesApprovalsRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/analytics': {
-      id: '/modules/analytics'
-      path: '/analytics'
-      fullPath: '/modules/analytics'
-      preLoaderRoute: typeof ModulesAnalyticsRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/admin': {
-      id: '/modules/admin'
-      path: '/admin'
-      fullPath: '/modules/admin'
-      preLoaderRoute: typeof ModulesAdminRouteImport
-      parentRoute: typeof ModulesRoute
-    }
-    '/modules/$slug/login': {
-      id: '/modules/$slug/login'
+    '/modules/$slug_/login': {
+      id: '/modules/$slug_/login'
       path: '/$slug/login'
       fullPath: '/modules/$slug/login'
       preLoaderRoute: typeof ModulesSlugLoginRouteImport
       parentRoute: typeof ModulesRoute
     }
+    '/modules/people/dashboard/': {
+      id: '/modules/people/dashboard/'
+      path: '/'
+      fullPath: '/modules/people/dashboard/'
+      preLoaderRoute: typeof ModulesPeopleDashboardIndexRouteImport
+      parentRoute: typeof ModulesPeopleDashboardRoute
+    }
+    '/modules/people/dashboard/leave': {
+      id: '/modules/people/dashboard/leave'
+      path: '/leave'
+      fullPath: '/modules/people/dashboard/leave'
+      preLoaderRoute: typeof ModulesPeopleDashboardLeaveRouteImport
+      parentRoute: typeof ModulesPeopleDashboardRoute
+    }
+    '/modules/people/dashboard/directory': {
+      id: '/modules/people/dashboard/directory'
+      path: '/directory'
+      fullPath: '/modules/people/dashboard/directory'
+      preLoaderRoute: typeof ModulesPeopleDashboardDirectoryRouteImport
+      parentRoute: typeof ModulesPeopleDashboardRoute
+    }
+    '/modules/people/dashboard/attendance': {
+      id: '/modules/people/dashboard/attendance'
+      path: '/attendance'
+      fullPath: '/modules/people/dashboard/attendance'
+      preLoaderRoute: typeof ModulesPeopleDashboardAttendanceRouteImport
+      parentRoute: typeof ModulesPeopleDashboardRoute
+    }
   }
 }
 
+interface ModulesPeopleDashboardRouteChildren {
+  ModulesPeopleDashboardAttendanceRoute: typeof ModulesPeopleDashboardAttendanceRoute
+  ModulesPeopleDashboardDirectoryRoute: typeof ModulesPeopleDashboardDirectoryRoute
+  ModulesPeopleDashboardLeaveRoute: typeof ModulesPeopleDashboardLeaveRoute
+  ModulesPeopleDashboardIndexRoute: typeof ModulesPeopleDashboardIndexRoute
+}
+
+const ModulesPeopleDashboardRouteChildren: ModulesPeopleDashboardRouteChildren =
+  {
+    ModulesPeopleDashboardAttendanceRoute:
+      ModulesPeopleDashboardAttendanceRoute,
+    ModulesPeopleDashboardDirectoryRoute: ModulesPeopleDashboardDirectoryRoute,
+    ModulesPeopleDashboardLeaveRoute: ModulesPeopleDashboardLeaveRoute,
+    ModulesPeopleDashboardIndexRoute: ModulesPeopleDashboardIndexRoute,
+  }
+
+const ModulesPeopleDashboardRouteWithChildren =
+  ModulesPeopleDashboardRoute._addFileChildren(
+    ModulesPeopleDashboardRouteChildren,
+  )
+
 interface ModulesRouteChildren {
-  ModulesAdminRoute: typeof ModulesAdminRoute
-  ModulesAnalyticsRoute: typeof ModulesAnalyticsRoute
-  ModulesApprovalsRoute: typeof ModulesApprovalsRoute
-  ModulesAssetsRoute: typeof ModulesAssetsRoute
-  ModulesAttendanceRoute: typeof ModulesAttendanceRoute
-  ModulesCliqRoute: typeof ModulesCliqRoute
-  ModulesComplianceRoute: typeof ModulesComplianceRoute
-  ModulesDeskRoute: typeof ModulesDeskRoute
-  ModulesExitRoute: typeof ModulesExitRoute
-  ModulesExpensesRoute: typeof ModulesExpensesRoute
-  ModulesGoalsRoute: typeof ModulesGoalsRoute
-  ModulesLeaveRoute: typeof ModulesLeaveRoute
-  ModulesPayrollRoute: typeof ModulesPayrollRoute
-  ModulesPeopleRoute: typeof ModulesPeopleRoute
-  ModulesPerformanceRoute: typeof ModulesPerformanceRoute
-  ModulesProjectsRoute: typeof ModulesProjectsRoute
-  ModulesRecruitRoute: typeof ModulesRecruitRoute
-  ModulesShiftsRoute: typeof ModulesShiftsRoute
-  ModulesSurveysRoute: typeof ModulesSurveysRoute
-  ModulesTrainingRoute: typeof ModulesTrainingRoute
-  ModulesTravelRoute: typeof ModulesTravelRoute
+  ModulesSlugRoute: typeof ModulesSlugRoute
+  ModulesIndexRoute: typeof ModulesIndexRoute
   ModulesSlugLoginRoute: typeof ModulesSlugLoginRoute
+  ModulesDeskDashboardRoute: typeof ModulesDeskDashboardRoute
+  ModulesPayrollDashboardRoute: typeof ModulesPayrollDashboardRoute
+  ModulesPeopleDashboardRoute: typeof ModulesPeopleDashboardRouteWithChildren
+  ModulesProjectsDashboardRoute: typeof ModulesProjectsDashboardRoute
 }
 
 const ModulesRouteChildren: ModulesRouteChildren = {
-  ModulesAdminRoute: ModulesAdminRoute,
-  ModulesAnalyticsRoute: ModulesAnalyticsRoute,
-  ModulesApprovalsRoute: ModulesApprovalsRoute,
-  ModulesAssetsRoute: ModulesAssetsRoute,
-  ModulesAttendanceRoute: ModulesAttendanceRoute,
-  ModulesCliqRoute: ModulesCliqRoute,
-  ModulesComplianceRoute: ModulesComplianceRoute,
-  ModulesDeskRoute: ModulesDeskRoute,
-  ModulesExitRoute: ModulesExitRoute,
-  ModulesExpensesRoute: ModulesExpensesRoute,
-  ModulesGoalsRoute: ModulesGoalsRoute,
-  ModulesLeaveRoute: ModulesLeaveRoute,
-  ModulesPayrollRoute: ModulesPayrollRoute,
-  ModulesPeopleRoute: ModulesPeopleRoute,
-  ModulesPerformanceRoute: ModulesPerformanceRoute,
-  ModulesProjectsRoute: ModulesProjectsRoute,
-  ModulesRecruitRoute: ModulesRecruitRoute,
-  ModulesShiftsRoute: ModulesShiftsRoute,
-  ModulesSurveysRoute: ModulesSurveysRoute,
-  ModulesTrainingRoute: ModulesTrainingRoute,
-  ModulesTravelRoute: ModulesTravelRoute,
+  ModulesSlugRoute: ModulesSlugRoute,
+  ModulesIndexRoute: ModulesIndexRoute,
   ModulesSlugLoginRoute: ModulesSlugLoginRoute,
+  ModulesDeskDashboardRoute: ModulesDeskDashboardRoute,
+  ModulesPayrollDashboardRoute: ModulesPayrollDashboardRoute,
+  ModulesPeopleDashboardRoute: ModulesPeopleDashboardRouteWithChildren,
+  ModulesProjectsDashboardRoute: ModulesProjectsDashboardRoute,
 }
 
 const ModulesRouteWithChildren =
@@ -835,11 +658,13 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  IntegrationsRoute: IntegrationsRoute,
   LoginRoute: LoginRoute,
   ModuleDetailRoute: ModuleDetailRoute,
   ModulesRoute: ModulesRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  SecurityRoute: SecurityRoute,
   SignupRoute: SignupRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,

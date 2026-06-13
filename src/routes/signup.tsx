@@ -43,7 +43,7 @@ function Signup() {
               Start Your HR Transformation
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of forward-thinking companies using ByThawkHR to streamline their workforce management across 21 integrated modules.
+              Join thousands of forward-thinking companies using ByThawkHR to streamline their workforce management across 20 integrated modules.
             </p>
 
             <div className="space-y-4 mb-12">
@@ -125,7 +125,7 @@ function Signup() {
           <div className="w-full max-w-sm">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-foreground mb-2">Get started free</h1>
-              <p className="text-muted-foreground">14 days of unlimited access to all 21 HR modules</p>
+              <p className="text-muted-foreground">14 days of unlimited access to all 20 HR modules</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
