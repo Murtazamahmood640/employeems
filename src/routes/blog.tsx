@@ -1,17 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Calendar, ArrowRight, Users, BarChart3, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/blog")({
-  head: () => ({
-    meta: [
-      { title: "Blog - Employee Zen" },
-      { name: "description", content: "Read articles, guides, and tips about HR management and workforce optimization." },
-    ],
-  }),
-  component: Blog,
-});
 
-function Blog() {
+
+export default function Blog() {
   const articles = [
     {
       id: 1,
@@ -147,12 +139,12 @@ function Blog() {
                   <p className="text-muted-foreground mb-6">{articles[0].excerpt}</p>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                     <span>{articles[0].author}</span>
-                    <span>•</span>
+                    <span>â€¢</span>
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       {articles[0].date}
                     </div>
-                    <span>•</span>
+                    <span>â€¢</span>
                     <span>{articles[0].readTime}</span>
                   </div>
                   <button className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80">
@@ -195,7 +187,7 @@ function Blog() {
                   <div className="flex items-center justify-between text-xs text-muted-foreground border-t border-border/50 pt-4">
                     <div className="flex items-center gap-2">
                       <span className="font-medium">{article.author}</span>
-                      <span className="text-border">•</span>
+                      <span className="text-border">â€¢</span>
                       <span>{article.date}</span>
                     </div>
                     <span className="text-primary/70 font-medium">{article.readTime}</span>

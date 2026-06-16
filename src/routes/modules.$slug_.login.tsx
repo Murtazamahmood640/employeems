@@ -1,33 +1,21 @@
-import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as Icons from "lucide-react";
 import { useState } from "react";
 import { getModule, type Module } from "@/lib/modules";
 
-export const Route = createFileRoute("/modules/$slug_/login")({
-  loader: ({ params }): { mod: Module } => {
-    const mod = getModule(params.slug);
-    if (!mod) throw notFound();
-    return { mod };
-  },
-  head: ({ loaderData }) => {
-    const m = loaderData?.mod;
-    return {
-      meta: [
-        { title: `Sign in to ${m?.name ?? "Module"} — ByThawkHR` },
-        { name: "description", content: `Access ${m?.name} in your ByThawkHR workspace.` },
-        { name: "robots", content: "noindex" },
-      ],
-    };
-  },
-  component: ModuleLogin,
-});
 
-function ModuleLogin() {
-  const { mod } = Route.useLoaderData() as { mod: Module };
+
+export default function ModuleLogin() {
+  const { slug_ } = useParams();
+  const mod = getModule(slug_ || "");
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
+  if (!mod) {
+    return <div className="min-h-screen flex items-center justify-center p-8 text-center text-xl">Module not found</div>;
+  }
+
   const ModIcon = Icons[mod.icon.displayName || mod.icon.name || "Box"] as any || Icons.Box;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,7 +29,7 @@ function ModuleLogin() {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
-      {/* LEFT — Module Showcase */}
+      {/* LEFT " Module Showcase */}
       <aside
         className="relative hidden overflow-hidden text-white lg:flex lg:flex-col lg:justify-between lg:p-12 animate-fade-in-left"
         style={{ background: `linear-gradient(155deg, var(--color-primary), oklch(0.18 0.04 260) 85%)` }}
@@ -69,8 +57,8 @@ function ModuleLogin() {
               <ModIcon className="h-7 w-7 text-white" />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-white/70 font-semibold mb-1">ByThawkHR · {mod.category.replace(/ — /g, ' ').replace(/[-_]/g, ' ')}</p>
-              <p className="text-xl font-bold text-white">{mod.name.replace(/ — /g, ' ').replace(/[-_]/g, ' ')}</p>
+              <p className="text-xs uppercase tracking-widest text-white/70 font-semibold mb-1">Ceedrs · {mod.category.replace(/ " /g, ' ').replace(/[-_]/g, ' ')}</p>
+              <p className="text-xl font-bold text-white">{mod.name.replace(/ " /g, ' ').replace(/[-_]/g, ' ')}</p>
             </div>
           </div>
           <h1 className="mt-8 text-4xl font-extrabold tracking-tight xl:text-5xl leading-tight">
@@ -106,12 +94,12 @@ function ModuleLogin() {
         <div className="relative z-10 text-xs text-white/60 animate-fade-in-up mt-8 border-t border-white/10 pt-6" style={{ animationDelay: '400ms' }}>
           <div className="flex items-center gap-2 bg-white/5 inline-flex px-4 py-2 rounded-full">
             <Icons.Zap className="h-3.5 w-3.5 text-yellow-400" />
-            <span className="font-medium text-white/80">One ByThawkHR account unlocks every module. Instant switching, single sign-on.</span>
+            <span className="font-medium text-white/80">One Ceedrs account unlocks every module. Instant switching, single sign-on.</span>
           </div>
         </div>
       </aside>
 
-      {/* RIGHT — login form */}
+      {/* RIGHT " login form */}
       <section className="flex items-center justify-center bg-background px-6 py-12 lg:px-12 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
         <div className="w-full max-w-md relative z-10">
@@ -136,7 +124,7 @@ function ModuleLogin() {
             <span className="eyebrow bg-primary/10 border-primary/20 text-primary mb-4 block w-max">Sign in</span>
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Welcome back to {mod.name}</h2>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Use your ByThawkHR account. New here? <Link to="/contact" className="font-semibold text-primary hover:text-primary/80 hover:underline transition-all">Request access</Link>.
+              Use your Ceedrs account. New here? <Link to="/contact" className="font-semibold text-primary hover:text-primary/80 hover:underline transition-all">Request access</Link>.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">

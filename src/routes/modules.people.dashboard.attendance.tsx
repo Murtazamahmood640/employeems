@@ -1,13 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Clock, Calendar as CalendarIcon, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 import { usePeople } from '@/lib/people-store';
 
-export const Route = createFileRoute('/modules/people/dashboard/attendance')({
-  component: PeopleAttendance,
-});
 
-function PeopleAttendance() {
+
+export default function PeopleAttendance() {
   const { employees, attendance, clockIn, clockOut } = usePeople();
   const [currentTime, setCurrentTime] = useState(new Date());
 

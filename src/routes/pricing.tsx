@@ -1,18 +1,8 @@
 import React from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Check, Sparkles, X, HelpCircle, CheckCircle2 } from "lucide-react";
 
-export const Route = createFileRoute("/pricing")({
-  head: () => ({
-    meta: [
-      { title: "Pricing — ByThawkHR" },
-      { name: "description", content: "Simple per-employee pricing with three plans. Activate only the modules your team needs." },
-      { property: "og:title", content: "Pricing — ByThawkHR" },
-      { property: "og:description", content: "Per-employee pricing. Modular. Transparent." },
-    ],
-  }),
-  component: Pricing,
-});
+
 
 const plans = [
   {
@@ -83,7 +73,7 @@ const featureComparison = [
   }
 ];
 
-function Pricing() {
+export default function Pricing() {
   return (
     <div className="bg-background min-h-screen">
       <section className="hero-bg border-b border-border relative overflow-hidden">
@@ -205,7 +195,7 @@ function Pricing() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { q: "Is there a free trial?", a: "Yes — 14 days, no credit card required, on any plan. You get full access to test every feature." },
+              { q: "Is there a free trial?", a: "Yes â€” 14 days, no credit card required, on any plan. You get full access to test every feature." },
               { q: "Can I switch plans later?", a: "Absolutely. You can upgrade or downgrade anytime. Pro-rated billing kicks in automatically without penalty." },
               { q: "Do you offer non-profit pricing?", a: "Yes! We offer a 30% discount for registered non-profits. Reach out via the contact page and we'll set it up." },
               { q: "What happens to my data if I cancel?", a: "You have 30 days to export all your data in CSV/JSON formats before it is permanently deleted from our servers." },

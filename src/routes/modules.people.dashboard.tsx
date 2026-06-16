@@ -1,15 +1,13 @@
-import { createFileRoute, Outlet, Link, useLocation } from '@tanstack/react-router';
+import { createFileRoute, Outlet, Link, useLocation } from "react-router-dom";
 import {
   Users, Clock, Calendar, FileText, Settings, Bell,
   Search, Network, Sun, Globe
 } from 'lucide-react';
 import { PeopleProvider } from '@/lib/people-store';
 
-export const Route = createFileRoute('/modules/people/dashboard')({
-  component: PeopleDashboardLayout,
-});
 
-function PeopleDashboardLayout() {
+
+export default function PeopleDashboardLayout() {
   const location = useLocation();
   const path = location.pathname;
 

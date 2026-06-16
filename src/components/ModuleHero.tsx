@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ChevronRight, LogIn } from "lucide-react";
 import { useParallax } from "@/hooks/useScrollAnimation";
 import type { Module } from "@/lib/modules";
@@ -102,7 +102,7 @@ export function ModuleHero({ module: mod }: ModuleHeroProps) {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-3 text-xs text-muted-foreground">bythawkhr.app / {mod.slug}</span>
+                <span className="ml-3 text-xs text-muted-foreground">Ceedrs.app / {mod.slug}</span>
               </div>
 
               {/* Image */}

@@ -1,15 +1,13 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from "react-router-dom";
 import {
   KanbanSquare, CheckSquare, Search, Bell, Settings,
   FolderOpen, Calendar, PieChart, Plus, MoreHorizontal,
   Clock, CheckCircle2, AlertCircle, LayoutGrid, List, Globe, Sun
 } from 'lucide-react';
 
-export const Route = createFileRoute('/modules/projects/dashboard')({
-  component: ProjectsDashboard,
-});
 
-function ProjectsDashboard() {
+
+export default function ProjectsDashboard() {
   return (
     <div className="flex h-screen bg-background overflow-hidden">
       {/* Sidebar - hidden on mobile */}

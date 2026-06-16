@@ -1,15 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "react-router-dom";
 import {
   Wallet, DollarSign, Calendar, FileText, Settings, Bell,
   Search, ArrowUpRight, ArrowDownRight, Download, CreditCard,
   Building, Receipt, Send, CheckCircle2, AlertCircle, FileDigit, Globe, Sun
 } from 'lucide-react';
 
-export const Route = createFileRoute('/modules/payroll/dashboard')({
-  component: PayrollDashboard,
-});
 
-function PayrollDashboard() {
+
+export default function PayrollDashboard() {
   return (
     <div className="flex h-screen bg-background overflow-hidden">
       {/* Sidebar - hidden on mobile */}
@@ -110,7 +108,7 @@ function PayrollDashboard() {
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
               <h2 className="text-3xl font-extrabold text-foreground">October 2026 Pay Run</h2>
-              <p className="text-muted-foreground mt-1">Status: <span className="font-semibold text-amber-500">Draft Processing</span> • Closes in 4 days</p>
+              <p className="text-muted-foreground mt-1">Status: <span className="font-semibold text-amber-500">Draft Processing</span> â€¢ Closes in 4 days</p>
             </div>
             <div className="flex items-center gap-3">
               <button className="btn-ghost py-2.5 px-4 text-sm"><Download className="h-4 w-4 mr-2" /> Export Bank File</button>
@@ -214,7 +212,7 @@ function PayrollDashboard() {
                       <div className="flex items-start justify-between mb-3">
                         <div>
                           <p className="font-bold text-sm text-foreground">{req.name}</p>
-                          <p className="text-xs font-medium text-muted-foreground mt-0.5">{req.date} • {req.cat}</p>
+                          <p className="text-xs font-medium text-muted-foreground mt-0.5">{req.date} â€¢ {req.cat}</p>
                         </div>
                         <span className="font-bold text-foreground text-lg">{req.amount}</span>
                       </div>

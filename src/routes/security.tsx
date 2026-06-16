@@ -1,18 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "react-router-dom";
 import {
   Shield, Lock, Server, FileCheck, CheckCircle2, AlertTriangle,
   Eye, Fingerprint, Globe, ShieldCheck, Database, Key
 } from "lucide-react";
 
-export const Route = createFileRoute("/security")({
-  head: () => ({
-    meta: [
-      { title: "Security and Compliance — ByThawkHR" },
-      { name: "description", content: "Enterprise-grade security, data isolation, and compliance built into every layer of ByThawkHR." },
-    ],
-  }),
-  component: SecurityPage,
-});
+
 
 const pillars = [
   {
@@ -24,7 +16,7 @@ const pillars = [
   {
     icon: Database,
     title: "Multi-Tenant Isolation",
-    desc: "Every database record carries a strict organization ID enforced at the query level. Cross-tenant data leakage is structurally impossible — it's an architectural guarantee, not a configuration.",
+    desc: "Every database record carries a strict organization ID enforced at the query level. Cross-tenant data leakage is structurally impossible  it's an architectural guarantee, not a configuration.",
     badge: "Row-Level Security"
   },
   {
@@ -75,7 +67,7 @@ const certifications = [
   { name: "ISO 27001", region: "International", detail: "Information security management system certified to the international standard." },
 ];
 
-function SecurityPage() {
+export default function SecurityPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* HERO */}
@@ -97,9 +89,9 @@ function SecurityPage() {
             </span>
           </h1>
           <p className="mt-8 max-w-2xl text-xl text-muted-foreground animate-fade-in-up-delay leading-relaxed">
-            Your workforce data is your most sensitive asset. ByThawkHR is built from the ground up
+            Your workforce data is your most sensitive asset. Ceedrs is built from the ground up
             with strict data isolation, end-to-end encryption, and global compliance standards so you
-            can focus on your people — not your security posture.
+            can focus on your people " not your security posture.
           </p>
         </div>
       </section>
@@ -114,7 +106,7 @@ function SecurityPage() {
             Security built into every layer
           </h2>
           <p className="text-lg text-muted-foreground">
-            Not bolted on as an afterthought — security is a core architectural concern from day one.
+            Not bolted on as an afterthought " security is a core architectural concern from day one.
           </p>
         </div>
 

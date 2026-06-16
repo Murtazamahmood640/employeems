@@ -31,7 +31,7 @@ const u = (id: string) => `https://images.unsplash.com/${id}?w=1400&q=80&auto=fo
 
 export const modules: Module[] = [
   {
-    slug: "people", name: "People — Core HR", tagline: "Core HR & Workforce",
+    slug: "people", name: "People", tagline: "Core HR & Workforce",
     description: "The heart of the platform. Manages the complete employee lifecycle from hire to exit.",
     longDescription: "People is your single source of truth for everyone in the company. Profiles, attendance, leave, and lifecycle events — searchable, filterable, and beautifully organised.",
     icon: Users, phase: 1, category: "HR & Workforce",
@@ -56,7 +56,7 @@ export const modules: Module[] = [
   {
     slug: "projects", name: "Projects", tagline: "Task & Project Management",
     description: "Keep every project on track with task management built directly into your HR hub.",
-    longDescription: "Projects gives every team a flexible way to track work — from onboarding plans to compliance audits — with Kanban boards, comments, file attachments, and due-date nudges.",
+    longDescription: "Projects gives every team a flexible way to track work, from onboarding plans to compliance audits, with Kanban boards, comments, file attachments, and due-date nudges.",
     icon: KanbanSquare, phase: 1, category: "Productivity",
     image: u("photo-1611224923853-80b023f02d71"),
     accentHex: "#8b5cf6",
@@ -74,9 +74,9 @@ export const modules: Module[] = [
     highlights: ["Kanban boards", "Task assignments", "Project timelines", "Time tracking"],
   },
   {
-    slug: "desk", name: "Desk — Helpdesk", tagline: "Internal Ticketing",
+    slug: "desk", name: "Helpdesk", tagline: "Internal Ticketing",
     description: "A built-in ticketing system so employees can raise requests to the right teams instantly.",
-    longDescription: "Desk turns every internal request into a tracked ticket — HR questions, IT issues, facility requests — with categories, priorities, SLAs, and a clean agent inbox.",
+    longDescription: "Desk turns every internal request into a tracked ticket. HR questions, IT issues, facility requests, all with categories, priorities, SLAs, and a clean agent inbox.",
     icon: LifeBuoy, phase: 1, category: "Support",
     image: u("photo-1556761175-5973dc0f32e7"),
     accentHex: "#ef4444",
@@ -94,8 +94,8 @@ export const modules: Module[] = [
   },
   {
     slug: "payroll", name: "Payroll", tagline: "Salary & Deductions",
-    description: "End-to-end payroll processing — from salary configuration to downloadable payslips.",
-    longDescription: "Payroll handles the entire monthly cycle — earnings, deductions, taxes, statutory contributions — and generates branded PDF salary slips for every employee automatically.",
+    description: "End-to-end payroll processing, from salary configuration to downloadable payslips.",
+    longDescription: "Payroll handles the entire monthly cycle: earnings, deductions, taxes, statutory contributions, and generates branded PDF salary slips for every employee automatically.",
     icon: Wallet, phase: 3, category: "Finance",
     image: u("photo-1554224155-6726b3ff858f"),
     accentHex: "#22c55e",
@@ -113,7 +113,7 @@ export const modules: Module[] = [
   {
     slug: "recruit", name: "Recruit", tagline: "Applicant Tracking System",
     description: "A full applicant tracking system built directly inside your HR platform.",
-    longDescription: "Recruit is a modern ATS built into your HR platform. Publish jobs, source candidates, run interview loops, and hire — without context-switching to a separate tool.",
+    longDescription: "Recruit is a modern ATS built into your HR platform. Publish jobs, source candidates, run interview loops, and hire without context-switching to a separate tool.",
     icon: UserPlus, phase: 4, category: "Talent Acquisition",
     image: u("photo-1573497019940-1c28c88b4f3e"),
     accentHex: "#14b8a6",
@@ -127,9 +127,9 @@ export const modules: Module[] = [
     highlights: ["Candidate pipelines", "Interview scheduling", "Offer letters", "Job postings"],
   },
   {
-    slug: "cliq", name: "Cliq — Team Chat", tagline: "Internal Communication",
+    slug: "cliq", name: "Cliq", tagline: "Internal Communication",
     description: "Real-time messaging woven into the platform so your team never needs to switch apps.",
-    longDescription: "Cliq is Slack-style chat built into your HR workspace. Channels, DMs, threads, file sharing, and presence — without juggling another app or another login.",
+    longDescription: "Cliq is Slack-style chat built into your HR workspace. Channels, DMs, threads, file sharing, and presence, without juggling another app or another login.",
     icon: MessagesSquare, phase: 4, category: "Communication",
     image: u("photo-1531545514256-b1400bc00f31"),
     accentHex: "#3b82f6",
@@ -145,7 +145,7 @@ export const modules: Module[] = [
   {
     slug: "analytics", name: "Analytics", tagline: "Data & Reporting",
     description: "Turn workforce data into clear, actionable dashboards and exportable reports.",
-    longDescription: "Analytics turns operational data into insight. Pre-built HR dashboards, ad-hoc reports, and one-click Excel exports across every module — no BI tool required.",
+    longDescription: "Analytics turns operational data into insight. Pre-built HR dashboards, ad-hoc reports, and one-click Excel exports across every module, no BI tool required.",
     icon: BarChart3, phase: 3, category: "Reporting",
     image: u("photo-1551288049-bebda4e38f71"),
     accentHex: "#a855f7",
@@ -162,7 +162,7 @@ export const modules: Module[] = [
   {
     slug: "performance", name: "Performance", tagline: "Reviews & Appraisals",
     description: "Structure, track, and reward employee growth with a full performance management cycle.",
-    longDescription: "Performance powers continuous and cyclical reviews — KPIs, 360-degree feedback, calibration, and 1:1 notes that managers and employees actually want to use.",
+    longDescription: "Performance powers continuous and cyclical reviews: KPIs, 360-degree feedback, calibration, and 1:1 notes that managers and employees actually want to use.",
     icon: Target, phase: 3, category: "People Development",
     image: u("photo-1552664730-d307ca884978"),
     accentHex: "#ec4899",
@@ -178,7 +178,7 @@ export const modules: Module[] = [
   {
     slug: "expenses", name: "Expenses", tagline: "Claims & Reimbursements",
     description: "Track and reimburse employee spending without spreadsheets or manual processes.",
-    longDescription: "Expenses kills the receipt envelope. Snap, upload, categorise — managers approve, finance reimburses, and budgets stay in check.",
+    longDescription: "Expenses kills the receipt envelope. Snap, upload, categorise, managers approve, finance reimburses, and budgets stay in check.",
     icon: Receipt, phase: 3, category: "Finance",
     image: u("photo-1554224155-8d04cb21cd6c"),
     accentHex: "#f43f5e",
@@ -194,7 +194,7 @@ export const modules: Module[] = [
   },
   {
     slug: "assets", name: "Assets", tagline: "Equipment Management",
-    description: "Know exactly who has what company equipment — at all times.",
+    description: "Know exactly who has what company equipment at all times.",
     longDescription: "Assets tracks every laptop, monitor, and access card from procurement to retirement, with depreciation schedules and clean return workflows.",
     icon: Laptop, phase: 3, category: "Operations",
     image: u("photo-1517336714731-489689fd1ca8"),
@@ -211,7 +211,7 @@ export const modules: Module[] = [
   },
   {
     slug: "training", name: "Training", tagline: "Learning & Development",
-    description: "Upskill your team from inside the platform — no third-party LMS needed.",
+    description: "Upskill your team from inside the platform, no third-party LMS needed.",
     longDescription: "Training is your in-house LMS. Build courses with video and quizzes, track completion, issue branded certificates, and identify skill gaps across teams.",
     icon: GraduationCap, phase: 4, category: "People Development",
     image: u("photo-1522202176988-66273c2fd55f"),
@@ -228,7 +228,7 @@ export const modules: Module[] = [
   },
   {
     slug: "surveys", name: "Surveys & Feedback", tagline: "Pulse & Engagement",
-    description: "Understand your workforce beyond the numbers — gather honest, structured feedback.",
+    description: "Understand your workforce beyond the numbers, gather honest, structured feedback.",
     longDescription: "Surveys lets you measure engagement continuously. Pulse surveys, eNPS, and anonymous feedback channels with trend dashboards leaders actually read.",
     icon: ClipboardList, phase: 4, category: "Engagement",
     image: u("photo-1552664730-d307ca884978"),
@@ -244,14 +244,14 @@ export const modules: Module[] = [
   },
   {
     slug: "approvals", name: "Approvals", tagline: "Workflow Management",
-    description: "One unified inbox for every pending decision — across all modules.",
-    longDescription: "Approvals puts every pending decision in one inbox and every contract in one template library — with native e-signature support so nothing leaves the platform.",
+    description: "One unified inbox for every pending decision across all modules.",
+    longDescription: "Approvals puts every pending decision in one inbox and every contract in one template library, with native e-signature support so nothing leaves the platform.",
     icon: FileSignature, phase: 4, category: "Workflow",
     image: u("photo-1450101499163-c8848c66ca85"),
     accentHex: "#7c3aed",
     features: [
       { title: "Central inbox", description: "Review leaves, expenses, and travel requests in a single view.", iconName: "Inbox", status: "planned" },
-      { title: "Multi-level chains", description: "Configure complex approval routing (e.g., Manager → HR → Finance).", iconName: "GitMerge", status: "planned" },
+      { title: "Multi-level chains", description: "Configure complex approval routing (e.g., Manager to HR to Finance).", iconName: "GitMerge", status: "planned" },
       { title: "Delegation", description: "Temporarily assign approval rights to a colleague while on leave.", iconName: "UserCog", status: "planned" },
       { title: "Deadline reminders", description: "Automated nudges for pending requests to prevent bottlenecks.", iconName: "BellRing", status: "planned" },
       { title: "Audit trails", description: "Immutable logs of exactly who approved what, and when.", iconName: "History", status: "planned" },
@@ -261,7 +261,7 @@ export const modules: Module[] = [
   {
     slug: "travel", name: "Travel", tagline: "Business Trips & Policies",
     description: "Manage business travel end-to-end without a separate tool.",
-    longDescription: "Travel manages business trips end-to-end — requests, itineraries, per diem calculations, and policy enforcement — synced with Expenses for clean reimbursement.",
+    longDescription: "Travel manages business trips end-to-end: requests, itineraries, per diem calculations, and policy enforcement, synced with Expenses for clean reimbursement.",
     icon: Plane, phase: 4, category: "Operations",
     image: u("photo-1488646953014-85cb44e25828"),
     accentHex: "#0284c7",
@@ -277,7 +277,7 @@ export const modules: Module[] = [
   {
     slug: "shifts", name: "Shifts & Scheduling", tagline: "Workforce Rosters",
     description: "Build rosters, manage shift swaps, and track coverage in real time.",
-    longDescription: "Shifts is for teams that work in rotations — retail, healthcare, support. Build rosters, approve swaps, and get alerted before a shift goes uncovered.",
+    longDescription: "Shifts is for teams that work in rotations: retail, healthcare, support. Build rosters, approve swaps, and get alerted before a shift goes uncovered.",
     icon: CalendarClock, phase: 4, category: "Operations",
     image: u("photo-1506784983877-45594efa4cbe"),
     accentHex: "#f97316",
@@ -292,7 +292,7 @@ export const modules: Module[] = [
   },
   {
     slug: "contracts", name: "Contracts & Letters", tagline: "HR Document Generation",
-    description: "Generate official HR documents in seconds — no Word templates needed.",
+    description: "Generate official HR documents in seconds, no Word templates needed.",
     longDescription: "Contracts & Letters handles official documentation. Generate offers, warnings, and NOCs directly from employee profiles with digital signatures.",
     icon: FileSignature, phase: 4, category: "HR & Compliance",
     image: u("photo-1450101499163-c8848c66ca85"),
@@ -325,7 +325,7 @@ export const modules: Module[] = [
   {
     slug: "compliance", name: "Disciplinary & Compliance", tagline: "Incident Tracking",
     description: "Handle sensitive HR cases properly, confidentially, and with a full paper trail.",
-    longDescription: "Compliance handles the sensitive end of HR — warnings, disciplinary cases, incident reports — with restricted access, audit trails, and document-grade record-keeping.",
+    longDescription: "Compliance handles the sensitive end of HR: warnings, disciplinary cases, incident reports, with restricted access, audit trails, and document-grade record-keeping.",
     icon: ShieldAlert, phase: 4, category: "HR & Compliance",
     image: u("photo-1521791136064-7986c2920216"),
     accentHex: "#dc2626",
@@ -356,9 +356,9 @@ export const modules: Module[] = [
   },
   {
     slug: "admin", name: "Admin Panel", tagline: "Command Centre",
-    description: "The control centre for super admins — manage the entire platform, users, and configuration from one place.",
-    longDescription: "The Admin Panel is mission control for ByThawkHR. Configure your organisation, invite users, assign roles, toggle modules per plan or department, and review a full audit trail of every change made across the platform.",
-    icon: Shield, phase: 1, category: "Core — Always On",
+    description: "The control centre for super admins to manage the entire platform, users, and configuration from one place.",
+    longDescription: "The Admin Panel is mission control for Ceedrs. Configure your organisation, invite users, assign roles, toggle modules per plan or department, and review a full audit trail of every change made across the platform.",
+    icon: Shield, phase: 1, category: "Core",
     image: u("photo-1551288049-bebda4e38f71"),
     accentHex: "#6366f1",
     features: [

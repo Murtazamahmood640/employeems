@@ -1,25 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "FAQ - Employee Zen" },
-      { name: "description", content: "Frequently asked questions about Employee Zen HR platform." },
-    ],
-  }),
-  component: FAQ,
-});
 
-function FAQ() {
+
+export default function FAQ() {
   const [openItems, setOpenItems] = useState<string[]>([]);
 
   const faqs = [
     {
       id: "1",
       question: "What is Employee Zen?",
-      answer: "Employee Zen is a comprehensive HR management platform that consolidates multiple HR functions—from attendance and leave management to payroll and performance reviews—into a single, unified workspace. It&apos;s designed for modern organizations of all sizes."
+      answer: "Employee Zen is a comprehensive HR management platform that consolidates multiple HR functionsâ€”from attendance and leave management to payroll and performance reviewsâ€”into a single, unified workspace. It&apos;s designed for modern organizations of all sizes."
     },
     {
       id: "2",
@@ -39,7 +31,7 @@ function FAQ() {
     {
       id: "5",
       question: "Do you offer mobile apps?",
-      answer: "Yes, we have native iOS and Android apps. All critical functions—clock-in, leave requests, approvals—work offline and sync automatically when you reconnect. The mobile experience mirrors the web platform seamlessly."
+      answer: "Yes, we have native iOS and Android apps. All critical functionsâ€”clock-in, leave requests, approvalsâ€”work offline and sync automatically when you reconnect. The mobile experience mirrors the web platform seamlessly."
     },
     {
       id: "6",

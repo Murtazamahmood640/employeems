@@ -1,20 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "react-router-dom";
 import { Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — ByThawkHR" },
-      { name: "description", content: "Book a demo, talk to sales, or get support from the ByThawkHR team." },
-      { property: "og:title", content: "Contact ByThawkHR" },
-      { property: "og:description", content: "We're here to help — book a demo or send us a note." },
-    ],
-  }),
-  component: Contact,
-});
 
-function Contact() {
+
+export default function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <>
@@ -41,7 +31,7 @@ function Contact() {
                 <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent-soft text-accent">
                   <MessageSquare className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 text-2xl font-bold">Thanks — we'll be in touch.</h3>
+                <h3 className="mt-5 text-2xl font-bold">Thanks " we'll be in touch.</h3>
                 <p className="mt-2 text-muted-foreground">A real person will reply within one business day.</p>
               </div>
             ) : (
@@ -50,7 +40,7 @@ function Contact() {
                   <Field label="Full name" name="name" />
                   <Field label="Work email" name="email" type="email" />
                   <Field label="Company" name="company" />
-                  <Field label="Team size" name="size" placeholder="e.g. 50–100" />
+                  <Field label="Team size" name="size" placeholder="e.g. 50 100" />
                 </div>
                 <div className="mt-4">
                   <label className="text-sm font-medium">How can we help?</label>
@@ -66,9 +56,9 @@ function Contact() {
           </form>
           <div className="space-y-4">
             {[
-              { icon: Mail, title: "Email", val: "hello@bythawkhr.com" },
+              { icon: Mail, title: "Email", val: "info@Ceedrs.com" },
               { icon: Phone, title: "Phone", val: "+1 (555) 028-3344" },
-              { icon: MapPin, title: "Office", val: "Remote-first — HQ in Bengaluru, India" },
+              { icon: MapPin, title: "Office", val: "Remote-first HQ in Karachi, Pakistan" },
             ].map((c) => (
               <div key={c.title} className="card-soft flex items-start gap-4 p-5">
                 <div className="grid h-10 w-10 place-items-center rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground">

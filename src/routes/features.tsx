@@ -1,18 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "react-router-dom";
 import {
   Users, KanbanSquare, LifeBuoy, Wallet, Laptop, Target, ArrowRight,
   CheckCircle2, Shield, Activity, RefreshCw, Lock, Globe, Zap
 } from "lucide-react";
 
-export const Route = createFileRoute("/features")({
-  head: () => ({
-    meta: [
-      { title: "Features — ByThawkHR" },
-      { name: "description", content: "Explore the comprehensive features of ByThawkHR across Core HR, Operations, Finance, and Talent." },
-    ],
-  }),
-  component: FeaturesPage,
-});
+
 
 const categories = [
   {
@@ -69,7 +61,7 @@ const categories = [
   }
 ];
 
-function FeaturesPage() {
+export default function FeaturesPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* HERO */}
@@ -85,7 +77,7 @@ function FeaturesPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-xl text-muted-foreground animate-fade-in-up-delay leading-relaxed">
-            ByThawkHR replaces dozens of disconnected tools with a single, deeply integrated platform.
+            Ceedrs replaces dozens of disconnected tools with a single, deeply integrated platform.
             Explore feature sets designed for modern, agile teams of every size.
           </p>
         </div>

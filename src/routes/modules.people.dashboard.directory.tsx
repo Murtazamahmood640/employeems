@@ -1,13 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "react-router-dom";
 import { useState } from 'react';
 import { Search, Plus, Filter, MoreHorizontal, Mail, Briefcase, Calendar, CheckCircle2, X } from 'lucide-react';
 import { usePeople } from '@/lib/people-store';
 
-export const Route = createFileRoute('/modules/people/dashboard/directory')({
-  component: PeopleDirectory,
-});
 
-function PeopleDirectory() {
+
+export default function PeopleDirectory() {
   const { employees, addEmployee } = usePeople();
   const [searchTerm, setSearchTerm] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

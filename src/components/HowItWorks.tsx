@@ -10,7 +10,7 @@ export function HowItWorks({ module: mod }: HowItWorksProps) {
   const steps = [
     {
       title: "Connect",
-      description: "Activate the module from Admin Panel — instantly available on web and mobile.",
+      description: "Activate the module from Admin Panel â€” instantly available on web and mobile.",
     },
     {
       title: "Configure",

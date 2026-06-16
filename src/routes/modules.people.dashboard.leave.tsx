@@ -1,12 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "react-router-dom";
 import { Calendar, CheckCircle2, XCircle, Search, Filter, Clock } from 'lucide-react';
 import { usePeople } from '@/lib/people-store';
 
-export const Route = createFileRoute('/modules/people/dashboard/leave')({
-  component: PeopleLeaveRequests,
-});
 
-function PeopleLeaveRequests() {
+
+export default function PeopleLeaveRequests() {
   const { employees, leaveRequests, approveLeave, rejectLeave } = usePeople();
 
   const getEmployee = (id: string) => employees.find(e => e.id === id);
@@ -60,7 +58,7 @@ function PeopleLeaveRequests() {
                   <img src={`https://i.pravatar.cc/150?img=${emp.avatarId}`} alt={emp.name} className="h-12 w-12 rounded-full border border-border object-cover" />
                   <div>
                     <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">{emp.name}</h3>
-                    <p className="text-sm text-muted-foreground">{emp.department} • {emp.role}</p>
+                    <p className="text-sm text-muted-foreground">{emp.department} â€¢ {emp.role}</p>
                   </div>
                 </div>
 

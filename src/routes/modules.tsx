@@ -1,5 +1,5 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Outlet } from "react-router-dom";
 
-export const Route = createFileRoute('/modules')({
-  component: () => <Outlet />
-})
+export default function Modules() {
+  return <Outlet />;
+}

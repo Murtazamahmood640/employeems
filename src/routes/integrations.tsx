@@ -1,18 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import {
   Plug, ArrowRight, Zap, RefreshCw, Layers, CheckCircle2,
   Shield, Clock, Globe, Code2, Webhook, GitBranch, Users, Bell
 } from "lucide-react";
 
-export const Route = createFileRoute("/integrations")({
-  head: () => ({
-    meta: [
-      { title: "Integrations — ByThawkHR" },
-      { name: "description", content: "Connect ByThawkHR with your favorite tools. Seamless integrations for Google Workspace, Microsoft 365, Slack, and more." },
-    ],
-  }),
-  component: IntegrationsPage,
-});
+
 
 const integrations = [
   { name: "Google Workspace", cat: "Identity & SSO", logo: "G", color: "#4285F4", desc: "Sync your Google directory, calendar, and user accounts. Enable one-click Google SSO for your entire team." },
@@ -24,12 +16,12 @@ const integrations = [
   { name: "QuickBooks", cat: "Accounting", logo: "QB", color: "#2CA01C", desc: "Push finalized payroll data and approved expense claims directly to QuickBooks for seamless bookkeeping." },
   { name: "Xero", cat: "Accounting", logo: "X", color: "#13B5EA", desc: "Automate payroll journal entries and expense reconciliation in Xero without any manual data entry." },
   { name: "Salesforce", cat: "CRM", logo: "SF", color: "#00A1E0", desc: "Sync HR data with Salesforce to align sales headcount planning, onboarding, and commissions." },
-  { name: "Zapier", cat: "Automation", logo: "Z", color: "#FF4A00", desc: "Connect ByThawkHR to 5,000+ apps via Zapier. Build powerful no-code automation workflows in minutes." },
+  { name: "Zapier", cat: "Automation", logo: "Z", color: "#FF4A00", desc: "Connect Ceedrs to 5,000+ apps via Zapier. Build powerful no-code automation workflows in minutes." },
   { name: "BambooHR", cat: "Data Migration", logo: "B", color: "#7DB820", desc: "Migrate your existing employee data from BambooHR with a guided, zero-data-loss import wizard." },
   { name: "Workday", cat: "Data Migration", logo: "W", color: "#F96302", desc: "Bulk import headcount, org structure, and HR history from Workday with our enterprise migration toolkit." },
 ];
 
-function IntegrationsPage() {
+export default function IntegrationsPage() {
   return (
     <div className="bg-background min-h-screen">
       {/* HERO */}
@@ -46,7 +38,7 @@ function IntegrationsPage() {
             Works with the tools <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">you already love.</span>
           </h1>
           <p className="mt-8 max-w-2xl mx-auto text-xl text-muted-foreground animate-fade-in-up-delay leading-relaxed">
-            ByThawkHR is the central nervous system of your HR stack. Native integrations sync data bi-directionally with your existing identity providers, communication tools, and accounting software — no duplicate entry, ever.
+            Ceedrs is the central nervous system of your HR stack. Native integrations sync data bi-directionally with your existing identity providers, communication tools, and accounting software " no duplicate entry, ever.
           </p>
         </div>
       </section>
@@ -55,7 +47,7 @@ function IntegrationsPage() {
       <section className="container-x py-24">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-4xl font-bold tracking-tight mb-4">Native Integrations</h2>
-          <p className="text-lg text-muted-foreground">Deep, purpose-built connections — not just an API handshake.</p>
+          <p className="text-lg text-muted-foreground">Deep, purpose-built connections " not just an API handshake.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -99,7 +91,7 @@ function IntegrationsPage() {
           {[
             { icon: Webhook, title: "Webhooks", desc: "Push real-time event notifications to any endpoint the moment an employee record is created, updated, or deactivated. Perfect for syncing to custom internal tools.", badge: "Real-time" },
             { icon: Code2, title: "REST API", desc: "Full programmatic access to your entire organization's data. Build custom reports, dashboards, and integrations with our well-documented, versioned API.", badge: "v2.0" },
-            { icon: Zap, title: "Zapier Workflows", desc: "Connect ByThawkHR to over 5,000 apps without a single line of code. Build triggers like 'When employee is hired → Add to HubSpot'.", badge: "No-code" },
+            { icon: Zap, title: "Zapier Workflows", desc: "Connect Ceedrs to over 5,000 apps without a single line of code. Build triggers like 'When employee is hired Ã¢â€ â€™ Add to HubSpot'.", badge: "No-code" },
           ].map((feat, i) => (
             <div key={i} className="uiverse-card group">
               <div className="uiverse-card-content p-8 h-full bg-surface-elevated/30 flex flex-col">
@@ -129,7 +121,7 @@ function IntegrationsPage() {
             </div>
             <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed text-foreground bg-background/50">
               <span className="text-muted-foreground">// Fetch all active employees in the "Engineering" department</span>{"\n"}
-              <span className="text-primary">const</span> response = <span className="text-primary">await</span> fetch(<span className="text-accent">{`'https://api.bythawkhr.com/v2/employees?department=Engineering&status=active'`}</span>, {"{"}
+              <span className="text-primary">const</span> response = <span className="text-primary">await</span> fetch(<span className="text-accent">{`'https://api.Ceedrs.com/v2/employees?department=Engineering&status=active'`}</span>, {"{"}
               {"\n"}  headers: {"{"} <span className="text-accent">'Authorization'</span>: <span className="text-accent">{"`Bearer ${YOUR_API_KEY}`"}</span> {"}"}
               {"\n"}{"}"}){"\n\n"}
               <span className="text-primary">const</span> {"{"} employees, total {"}"} = <span className="text-primary">await</span> response.json(){"\n\n"}
@@ -148,7 +140,7 @@ function IntegrationsPage() {
                 Your data stays <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">in sync, always.</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-                ByThawkHR uses bi-directional syncing wherever possible. When you hire someone in ByThawkHR, they're automatically provisioned in Google Workspace, added to Slack, and created in QuickBooks — all within seconds.
+                Ceedrs uses bi-directional syncing wherever possible. When you hire someone in Ceedrs, they're automatically provisioned in Google Workspace, added to Slack, and created in QuickBooks " all within seconds.
               </p>
               <ul className="space-y-4">
                 {[
@@ -170,10 +162,10 @@ function IntegrationsPage() {
 
             <div className="flex flex-col gap-4">
               {[
-                { from: "ByThawkHR", to: "Google Workspace", event: "Employee hired", time: "2s" },
-                { from: "Slack", to: "ByThawkHR", event: "Leave request approved", time: "1s" },
-                { from: "ByThawkHR", to: "QuickBooks", event: "Payroll finalized", time: "4s" },
-                { from: "ByThawkHR", to: "Jira", event: "Helpdesk ticket raised", time: "1s" },
+                { from: "Ceedrs", to: "Google Workspace", event: "Employee hired", time: "2s" },
+                { from: "Slack", to: "Ceedrs", event: "Leave request approved", time: "1s" },
+                { from: "Ceedrs", to: "QuickBooks", event: "Payroll finalized", time: "4s" },
+                { from: "Ceedrs", to: "Jira", event: "Helpdesk ticket raised", time: "1s" },
               ].map((sync, i) => (
                 <div key={i} className="uiverse-card group animate-scale-in" style={{ animationDelay: `${i * 100}ms` }}>
                   <div className="uiverse-card-content flex items-center gap-4 p-5 bg-surface-elevated/30">
@@ -204,7 +196,7 @@ function IntegrationsPage() {
       <section className="container-x py-24 border-t border-border/50">
         <div className="text-center card-soft p-12 lg:p-20 border-2 border-primary/20 bg-primary/5 rounded-3xl">
           <h2 className="text-4xl font-extrabold tracking-tight mb-4">Don't see your tool?</h2>
-          <p className="text-xl text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">We are constantly shipping new native integrations. Our open API means your engineering team can connect ByThawkHR to virtually anything in minutes.</p>
+          <p className="text-xl text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">We are constantly shipping new native integrations. Our open API means your engineering team can connect Ceedrs to virtually anything in minutes.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact" className="btn-primary group text-base px-8 py-4">
               Request an Integration <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

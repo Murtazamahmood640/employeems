@@ -1,99 +1,109 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import * as Icons from "lucide-react";
 import { modules } from "@/lib/modules";
+import { useState, useEffect } from "react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ByThawkHR — One workspace for your entire workforce" },
-      { name: "description", content: "Modular, multi-tenant HR platform with 20 focused modules. Web + mobile, real-time, offline-ready. Replace 10 tools with one." },
-      { property: "og:title", content: "ByThawkHR — One workspace for your entire workforce" },
-      { property: "og:description", content: "Replace 10 HR tools with one modular platform. 20 modules across People, Operations, Finance, Talent, and Governance." },
-    ],
-  }),
-  component: Home,
-});
+const slides = [
+  {
+    title: <>One workspace for your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">entire workforce.</span></>,
+    subtitle: "Ceedrs replaces ten disconnected tools with one modular platform. From onboarding and attendance to payroll, performance, and exit.",
+    image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&q=80"
+  },
+  {
+    title: <>Seamless <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Attendance</span> Tracking.</>,
+    subtitle: "Clock in even when offline. Geo-fenced tracking and auto-sync ensures perfect time logs without the hassle.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80"
+  },
+  {
+    title: <>Automate <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Leave & Payroll.</span></>,
+    subtitle: "Multi-level approvals, auto-deductions, and one-click salary slip generation. Let the platform handle the math.",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=80"
+  }
+];
 
-function Home() {
+export default function Home() {
   const featured = modules.slice(0, 8);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
   
   return (
     <>
-      {/* HERO */}
-      <section className="hero-bg relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-60" />
-        <div className="container-x relative grid gap-12 pb-24 pt-20 lg:grid-cols-2 lg:items-center lg:pb-32 lg:pt-28">
-          <div className="animate-fade-in-left">
-            <span className="eyebrow bg-primary/10 border-primary/20 text-primary">
-              <Icons.Sparkles className="h-3.5 w-3.5 text-accent" />
-              Now in private beta · v1.0
-            </span>
-            <h1 className="mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              One workspace for your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">entire workforce</span>.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              ByThawkHR replaces ten disconnected tools with one modular platform —
-              from onboarding and attendance to payroll, performance, and exit.
-              Built for the web, perfected on mobile.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link to="/signup" className="btn-primary group">
-                Start free trial <Icons.ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/features" className="btn-ghost hover:bg-primary/5 hover:border-primary/30 transition-all">
-                Explore features
-              </Link>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground">
-              {["No credit card", "14-day trial", "Cancel anytime"].map((t) => (
-                <div key={t} className="flex items-center gap-2">
-                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icons.Check className="h-3.5 w-3.5 text-primary" />
+      {/* HERO SLIDER */}
+      <section className="relative overflow-hidden bg-background pt-8 pb-28 min-h-[calc(100vh-5rem)] flex items-center">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background pointer-events-none" />
+        
+        <div className="container-x relative z-10 mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-left animate-fade-in-left">
+              <div className="relative min-h-[200px]">
+                {slides.map((slide, index) => (
+                  <div 
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === index ? 'opacity-100 relative z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                  >
+                    <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl drop-shadow-sm leading-[1.15]">
+                      {slide.title}
+                    </h1>
+                    <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
+                      {slide.subtitle}
+                    </p>
                   </div>
-                  {t}
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="relative animate-fade-in-right">
-            <div className="absolute -inset-6 rounded-3xl bg-[image:var(--gradient-primary)] opacity-20 blur-3xl" />
-            <div className="relative uiverse-card">
-              <div className="uiverse-card-content rounded-2xl overflow-hidden border border-border/50">
-                <img
-                  src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1400&q=80"
-                  alt="ByThawkHR dashboard preview showing team analytics"
-                  className="aspect-[4/3] w-full object-cover"
-                  loading="eager"
-                />
+                ))}
+              </div>
+              
+              <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
+                <Link to="/signup" className="btn-primary group w-full sm:w-auto text-lg px-8 py-4 shadow-xl shadow-primary/20 hover:shadow-primary/40">
+                  Start free trial <Icons.ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/features" className="btn-ghost w-full sm:w-auto text-lg px-8 py-4 bg-white hover:bg-gray-50 border-gray-200">
+                  Explore features
+                </Link>
+              </div>
+              
+              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-muted-foreground">
+                {["No credit card", "14-day trial", "Cancel anytime"].map((t) => (
+                  <div key={t} className="flex items-center gap-2">
+                    <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icons.Check className="h-3.5 w-3.5 text-primary" />
+                    </div>
+                    {t}
+                  </div>
+                ))}
               </div>
             </div>
-            
-            <div className="absolute -bottom-6 -left-6 hidden w-64 uiverse-card sm:block animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-              <div className="uiverse-card-content p-5 bg-background/95 backdrop-blur-md rounded-2xl">
-                <div className="flex items-center gap-4">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/10 text-accent">
-                    <Icons.CheckCircle2 className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-foreground">Clocked in successfully</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">Sarah Connor · 9:02 AM</p>
-                  </div>
-                </div>
+
+            {/* Right Image Slider */}
+            <div className="relative animate-fade-in-right">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-accent/20 blur-3xl opacity-50 rounded-full" />
+              <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-white p-2 shadow-2xl backdrop-blur-sm aspect-[4/3]">
+                {slides.map((slide, index) => (
+                  <img
+                    key={index}
+                    src={slide.image}
+                    alt="Ceedrs Dashboard Overview"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 rounded-xl ${currentSlide === index ? 'opacity-100' : 'opacity-0'}`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                ))}
               </div>
-            </div>
-            
-            <div className="absolute -right-6 -top-6 hidden w-56 uiverse-card sm:block animate-fade-in-down" style={{ animationDelay: '500ms' }}>
-              <div className="uiverse-card-content p-5 bg-background/95 backdrop-blur-md rounded-2xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <Icons.TrendingUp className="h-4 w-4 text-green-500" />
-                  <p className="text-xs font-semibold text-muted-foreground uppercase">This month</p>
-                </div>
-                <p className="text-3xl font-bold">98.4%</p>
-                <p className="text-xs font-medium text-muted-foreground mb-3">Overall attendance rate</p>
-                <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
-                  <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-primary to-accent" />
-                </div>
+
+              {/* Navigation Dots */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-8 bg-primary' : 'w-2.5 bg-border hover:bg-primary/50'}`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -120,13 +130,13 @@ function Home() {
       {/* HOW IT WORKS / PILLARS */}
       <section className="container-x py-24">
         <div className="max-w-3xl mb-16 text-center mx-auto">
-          <span className="eyebrow bg-primary/10 border-primary/20 text-primary">Why ByThawkHR</span>
+          <span className="eyebrow bg-primary/10 border-primary/20 text-primary">Why Ceedrs</span>
           <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
             A platform, not a folder of features.
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Most HR tools force you to glue together a dozen point solutions.
-            ByThawkHR is one unified product — and you only turn on what your company actually needs. No bloat, no confusion.
+            Ceedrs is one unified product " and you only turn on what your company actually needs. No bloat, no confusion.
           </p>
         </div>
         
@@ -135,7 +145,7 @@ function Home() {
             { icon: Icons.Layers, title: "Modular by design", body: "Activate any of 20 modules per plan, role, or department. No clutter, no upsell creep." },
             { icon: Icons.Lock, title: "Multi-tenant secure", body: "Every record carries an orgId. Strict data isolation between companies, baked into the database layer." },
             { icon: Icons.Smartphone, title: "Mobile-first, offline", body: "Flutter app queues clock-ins, requests, and approvals when offline, syncing instantly on reconnect." },
-            { icon: Icons.Globe, title: "One API, three clients", body: "A single Node.js backend powers web, mobile, and integrations — no logic duplication." },
+            { icon: Icons.Globe, title: "One API, three clients", body: "A single Node.js backend powers web, mobile, and integrations, no logic duplication." },
           ].map((p, i) => (
             <div key={p.title} className="uiverse-card group" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="uiverse-card-content p-8 flex flex-col h-full bg-surface-elevated/50 backdrop-blur-sm">
@@ -163,12 +173,12 @@ function Home() {
               One login. Only the apps your team actually uses.
             </h2>
             <p className="mt-6 text-lg text-white/70 leading-relaxed">
-              Inspired by Zoho One and Google Workspace — every employee gets a single SSO account.
+              Inspired by Zoho One and Google Workspace " every employee gets a single SSO account.
               The home screen shows a clean grid of icons for modules they have access to. Each module opens into its own focused, distraction-free workspace.
             </p>
             <ul className="mt-8 space-y-4 text-white/90">
               {[
-                "Strict role-based access — if you don't have Payroll, the icon doesn't exist on your screen.",
+                "Strict role-based access if you don't have Payroll, the icon doesn't exist on your screen.",
                 "Identical layout on web and mobile so muscle memory carries over perfectly.",
                 "Workspace sidebars adapt dynamically to the specific module you're in.",
               ].map((t) => (
@@ -196,7 +206,7 @@ function Home() {
                     <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-white/20 to-white/5 text-white shadow-inner mb-4 group-hover:scale-110 transition-transform">
                       <ModIcon className="h-6 w-6" />
                     </div>
-                    <p className="text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors">{m.name.replace(/ — /g, ' ').replace(/[-_]/g, ' ')}</p>
+                    <p className="text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors">{m.name.replace(/ " /g, ' ').replace(/[-_]/g, ' ')}</p>
                     <p className="text-xs text-white/60 line-clamp-1">{m.tagline}</p>
                   </Link>
                 );
@@ -245,7 +255,7 @@ function Home() {
             <h3 className="text-4xl font-bold leading-tight mb-6">Clock-in even with no signal.</h3>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               The native Flutter app uses a local database to queue actions when offline. Field staff can clock in, file
-              expenses, and approve requests in dead zones — everything replays seamlessly the moment they reconnect to the internet.
+              expenses, and approve requests in dead zones " everything replays seamlessly the moment they reconnect to the internet.
             </p>
             <ul className="space-y-4">
               {["Geo-fenced clock ins", "Photo receipt uploads", "Push notifications"].map((f) => (
@@ -332,7 +342,7 @@ function Home() {
             <div>
               <h2 className="text-4xl font-extrabold sm:text-5xl leading-tight mb-4">Ready to consolidate your HR stack?</h2>
               <p className="max-w-2xl text-lg text-white/80 leading-relaxed mx-auto lg:mx-0">
-                See ByThawkHR running with your actual data in a 30-minute personalized demo. No presentation slides — just the live product solving your problems.
+                See Ceedrs running with your actual data in a 30-minute personalized demo. No presentation slides " just the live product solving your problems.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">

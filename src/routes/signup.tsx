@@ -1,18 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Mail, Lock, User, Building2, ArrowRight, Check, Zap, Users, BarChart3, Rocket } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/signup")({
-  head: () => ({
-    meta: [
-      { title: "Sign up for ByThawkHR" },
-      { name: "description", content: "Create your ByThawkHR account. Start your free 14-day trial with no credit card required." },
-    ],
-  }),
-  component: Signup,
-});
 
-function Signup() {
+
+export default function Signup() {
   const [fullName, setFullName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -43,7 +35,7 @@ function Signup() {
               Start Your HR Transformation
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of forward-thinking companies using ByThawkHR to streamline their workforce management across 20 integrated modules.
+              Join thousands of forward-thinking companies using Ceedrs to streamline their workforce management across 20 integrated modules.
             </p>
 
             <div className="space-y-4 mb-12">

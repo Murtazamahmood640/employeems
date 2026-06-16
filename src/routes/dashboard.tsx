@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import {
   Users,
   Clock,
@@ -13,15 +13,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/dashboard")({
-  head: () => ({
-    meta: [
-      { title: "Dashboard - Employee Zen" },
-      { name: "description", content: "Your Employee Zen dashboard. Manage all HR functions in one place." },
-    ],
-  }),
-  component: Dashboard,
-});
+
 
 interface Module {
   slug: string;
@@ -32,7 +24,7 @@ interface Module {
   stats: string;
 }
 
-function Dashboard() {
+export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const modules: Module[] = [
@@ -186,7 +178,7 @@ function Dashboard() {
                   <p className="text-sm text-muted-foreground mb-6">{module.stats}</p>
                   <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
                     Open module
-                    <span>→</span>
+                    <span>â†’</span>
                   </div>
                 </div>
               </Link>

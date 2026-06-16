@@ -1,15 +1,13 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from "react-router-dom";
 import {
   Users, Clock, Sun, Plus, ArrowUpRight, ArrowDownRight,
   Download, CheckCircle2, XCircle
 } from 'lucide-react';
 import { usePeople } from '@/lib/people-store';
 
-export const Route = createFileRoute('/modules/people/dashboard/')({
-  component: PeopleDashboardOverview,
-});
 
-function PeopleDashboardOverview() {
+
+export default function PeopleDashboardOverview() {
   const { employees, attendance, leaveRequests, approveLeave, rejectLeave } = usePeople();
 
   const today = new Date().toISOString().split('T')[0];
@@ -33,7 +31,7 @@ function PeopleDashboardOverview() {
     <div className="flex-1 overflow-y-auto p-6 lg:p-10">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
         <div>
-          <h2 className="text-3xl font-extrabold text-foreground">Welcome back, Admin! <span className="inline-block animate-wave">👋</span></h2>
+          <h2 className="text-3xl font-extrabold text-foreground">Welcome back, Admin! <span className="inline-block animate-wave">ðŸ‘‹</span></h2>
           <p className="text-muted-foreground mt-1">Here is what is happening across your workforce today.</p>
         </div>
         <div className="flex items-center gap-3">

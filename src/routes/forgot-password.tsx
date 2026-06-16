@@ -1,18 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Mail, ArrowRight, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/forgot-password")({
-  head: () => ({
-    meta: [
-      { title: "Reset Password - ByThawkHR" },
-      { name: "description", content: "Reset your ByThawkHR password. Enter your email to get started." },
-    ],
-  }),
-  component: ForgotPassword,
-});
 
-function ForgotPassword() {
+
+export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);

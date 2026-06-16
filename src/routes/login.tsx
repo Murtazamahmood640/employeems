@@ -1,18 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Mail, Lock, ArrowRight, Zap, Clock, BarChart3, Users, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import logo from '../../public/logo.png';
 
-export const Route = createFileRoute("/login")({
-  head: () => ({
-    meta: [
-      { title: "Sign in to ByThawkHR" },
-      { name: "description", content: "Access your ByThawkHR dashboard. Sign in with your work email." },
-    ],
-  }),
-  component: Login,
-});
 
-function Login() {
+
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);

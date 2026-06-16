@@ -1,19 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { useState } from "react";
 import { modules, type Module } from "@/lib/modules";
 import { ArrowRight, Sparkles, Zap, Clock, BarChart3 } from "lucide-react";
 
-export const Route = createFileRoute("/modules/")({
-  head: () => ({
-    meta: [
-      { title: "All Modules � ByThawkHR" },
-      { name: "description", content: "Browse all ByThawkHR modules across Core HR, Operations, Finance, Talent, Engagement, and Governance." },
-    ],
-  }),
-  component: ModulesPage,
-});
 
-function ModulesPage() {
+
+export default function ModulesPage() {
   const [cat, setCat] = useState<string>("All");
   const categories = ["All", ...Array.from(new Set(modules.map(m => m.category)))];
   const list: Module[] = cat === "All" ? modules : modules.filter(m => m.category === cat);
@@ -91,12 +83,12 @@ function ModulesPage() {
                       <ModIcon className="h-8 w-8" />
                     </div>
                     <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-primary">
-                      {m.category.replace(/ � /g, ' ').replace(/_/g, ' ')}
+                      {m.category.replace(/ ï¿½ /g, ' ').replace(/_/g, ' ')}
                     </span>
                   </div>
 
                   <h3 className="text-xl font-extrabold tracking-tight text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
-                    {m.name.replace(/ � /g, ' ').replace(/_/g, ' ')}
+                    {m.name.replace(/ ï¿½ /g, ' ').replace(/_/g, ' ')}
                   </h3>
                   <p className="text-sm font-semibold text-primary mb-4">{m.tagline}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{m.description}</p>

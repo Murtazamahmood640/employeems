@@ -1,27 +1,16 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { Compass, Heart, Rocket, Users } from "lucide-react";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — ByThawkHR" },
-      { name: "description", content: "ByThawkHR is on a mission to give every company a humane, unified HR platform — modular, mobile-first, and built to scale." },
-      { property: "og:title", content: "About ByThawkHR" },
-      { property: "og:description", content: "We build the HR platform we always wanted: modular, fast, mobile-first." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" },
-    ],
-  }),
-  component: About,
-});
+
 
 const values = [
   { icon: Compass, title: "Clarity over clutter", body: "Every screen earns its place. If a feature doesn't help an employee or admin, it doesn't ship." },
   { icon: Heart, title: "People first, always", body: "HR software touches real lives. We design for dignity, not for box-ticking." },
-  { icon: Rocket, title: "Ship in phases", body: "Four focused delivery phases — never a big-bang rewrite that breaks live workflows." },
+  { icon: Rocket, title: "Ship in phases", body: "Four focused delivery phases never a big-bang rewrite that breaks live workflows." },
   { icon: Users, title: "One team, one API", body: "A single backend serves web, mobile, and integrations. No duplicated logic, no drift." },
 ];
 
-function About() {
+export default function About() {
   return (
     <>
       <section className="hero-bg border-b border-border">
@@ -32,7 +21,7 @@ function About() {
               We're building the HR platform we <span className="text-gradient">always wanted</span>.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-              ByThawkHR started with a simple frustration — running a company shouldn't mean stitching
+              Ceedrs started with a simple frustration " running a company shouldn't mean stitching
               together ten subscriptions, three spreadsheets, and a WhatsApp group. So we built one
               modular workspace where People, Operations, Finance, Talent, and Governance live together.
             </p>
@@ -90,8 +79,8 @@ function About() {
           <div className="space-y-6">
             <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=900&q=80" alt="" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-[var(--shadow-soft)]" />
             <div className="card-soft p-6">
-              <p className="text-sm text-muted-foreground">"We replaced four tools in our first month with ByThawkHR. The mobile clock-in alone paid for the year."</p>
-              <p className="mt-3 text-sm font-semibold">— Pilot customer, 80-person logistics team</p>
+              <p className="text-sm text-muted-foreground">"We replaced four tools in our first month with Ceedrs. The mobile clock-in alone paid for the year."</p>
+              <p className="mt-3 text-sm font-semibold">" Pilot customer, 80-person logistics team</p>
             </div>
           </div>
         </div>

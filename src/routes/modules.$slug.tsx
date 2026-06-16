@@ -1,29 +1,25 @@
-import { createFileRoute, Link, useParams, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, useParams, notFound } from "react-router-dom";
 import * as Icons from "lucide-react";
 import { getModule, modules } from "@/lib/modules";
 
-export const Route = createFileRoute("/modules/$slug")({
-  head: ({ params }) => {
-    const mod = getModule(params.slug);
-    if (!mod) return { meta: [{ title: 'Not Found' }] };
-    return {
-      meta: [
-        { title: `${mod.name} — ByThawkHR` },
-        { name: "description", content: mod.description },
-      ],
-    };
-  },
-  loader: ({ params }) => {
-    const mod = getModule(params.slug);
-    if (!mod) throw notFound();
-    return mod;
-  },
-  component: ModuleDetail,
-});
 
-function ModuleDetail() {
-  const { slug } = Route.useParams();
-  const currentMod = getModule(slug)!;
+
+export default function ModuleDetail() {
+  const { slug } = useParams();
+  const currentMod = getModule(slug || "");
+  
+  if (!currentMod) {
+    return (
+      <div className="bg-background min-h-screen flex items-center justify-center p-4">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Module not found</h1>
+          <p className="text-muted-foreground mb-8">We couldn't find a module named "{slug}".</p>
+          <Link to="/modules" className="btn-primary">View all modules</Link>
+        </div>
+      </div>
+    );
+  }
+
   const others = modules.filter((m) => m.slug !== slug && m.category === currentMod.category).slice(0, 3);
   
   const ModIcon = Icons[currentMod.icon.displayName || currentMod.icon.name || "Box"] as any || Icons.Box;
@@ -42,7 +38,7 @@ function ModuleDetail() {
           <nav className="flex items-center gap-1.5 text-sm text-muted-foreground animate-fade-in-down mb-8">
             <Link to="/modules" className="hover:text-foreground transition-colors">Modules</Link>
             <Icons.ChevronRight className="h-4 w-4" />
-            <span className="text-foreground font-semibold">{currentMod.name.replace(/ — /g, ' ').replace(/[-_]/g, ' ')}</span>
+            <span className="text-foreground font-semibold">{currentMod.name.replace(/ " /g, ' ').replace(/[-_]/g, ' ')}</span>
           </nav>
           
           <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
@@ -53,7 +49,7 @@ function ModuleDetail() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    {currentMod.category.replace(/ — /g, ' ').replace(/[-_]/g, ' ')}
+                    {currentMod.category.replace(/ " /g, ' ').replace(/[-_]/g, ' ')}
                   </p>
                   <p className="text-sm font-semibold mt-1 text-primary">{currentMod.tagline}</p>
                 </div>
@@ -102,7 +98,7 @@ function ModuleDetail() {
                     <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                     <span className="ml-3 text-xs text-muted-foreground font-medium flex items-center gap-2">
-                      <Icons.Lock className="h-3 w-3" /> bythawkhr.app / {currentMod.slug}
+                      <Icons.Lock className="h-3 w-3" /> Ceedrs.app / {currentMod.slug}
                     </span>
                   </div>
                   <img src={currentMod.image} alt={`${currentMod.name} interface`} className="w-full object-cover aspect-[4/3] hover:scale-[1.02] transition-transform duration-700" />
@@ -118,7 +114,7 @@ function ModuleDetail() {
         <div className="max-w-3xl mb-16 animate-fade-in-up">
           <span className="eyebrow inline-flex items-center gap-2 text-primary border-primary/20 bg-primary/5"><Icons.Sparkles className="h-3.5 w-3.5" /> Platform Features</span>
           <h2 className="mt-4 text-4xl lg:text-5xl font-bold tracking-tight leading-tight">Everything you need from <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{currentMod.name}</span>.</h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">A complete breakdown of what is live today and what is coming next in our roadmap.</p>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">A complete breakdown of everything this module has to offer.</p>
         </div>
         
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -135,10 +131,7 @@ function ModuleDetail() {
                     <div className="h-10 w-10 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                       <FeatureIcon className="h-5 w-5" />
                     </div>
-                    <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${f.status === 'live' ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-muted border-border text-muted-foreground'}`}>
-                      {f.status === 'live' ? <Icons.Check className="h-3 w-3" /> : <Icons.CircleDashed className="h-3 w-3" />}
-                      {f.status === 'live' ? 'Live' : 'Planned'}
-                    </div>
+
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{f.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-1">{f.description}</p>
@@ -168,7 +161,7 @@ function ModuleDetail() {
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{t}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    {["Activate the module from Admin Panel — instantly available on web and mobile.",
+                    {["Activate the module from Admin Panel, instantly available on web and mobile.",
                       "Set policies, approval chains, and access controls for roles that need it.",
                       "Invite your team. Built-in onboarding flows guide first-time users."][i]}
                   </p>
@@ -221,7 +214,7 @@ function ModuleDetail() {
           
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">Ready to explore {currentMod.name}?</h2>
-            <p className="text-lg text-muted-foreground mb-10">Join thousands of companies using ByThawkHR to streamline their HR operations and empower their teams.</p>
+            <p className="text-lg text-muted-foreground mb-10">Join thousands of companies using Ceedrs to streamline their HR operations and empower their teams.</p>
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Link to={`/modules/${slug}/login`} className="btn-primary group">

@@ -1,17 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-export const Route = createFileRoute("/privacy")({
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy - Employee Zen" },
-      { name: "description", content: "Privacy Policy for Employee Zen. Learn how we protect your data." },
-    ],
-  }),
-  component: PrivacyPolicy,
-});
 
-function PrivacyPolicy() {
+
+export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-background">
       <div className="container-x py-16 lg:py-24">

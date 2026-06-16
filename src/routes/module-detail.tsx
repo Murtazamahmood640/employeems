@@ -1,22 +1,11 @@
-import { createFileRoute, useParams } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRight, Check, Users, Clock, FileText } from "lucide-react";
 import { modules } from "@/lib/modules";
 
-export const Route = createFileRoute("/module-detail")({
-  head: ({ params }) => {
-    const module = modules.find(m => m.slug === params.slug);
-    return {
-      meta: [
-        { title: `${module?.name || "Module"} - Employee Zen` },
-        { name: "description", content: module?.longDescription || "" },
-      ],
-    };
-  },
-  component: ModuleDetail,
-});
 
-function ModuleDetail() {
+
+export default function ModuleDetail() {
   const { slug } = useParams({ from: "/module-detail/$slug" });
   const module = modules.find(m => m.slug === slug);
 
@@ -40,7 +29,7 @@ function ModuleDetail() {
       <section className="bg-gradient-to-br from-gray-50 to-white py-16 lg:py-24">
         <div className="container-x">
           <Link to="/modules" className="text-primary hover:text-primary/80 font-semibold mb-6 inline-flex items-center gap-1">
-            ← Back to modules
+            â† Back to modules
           </Link>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">

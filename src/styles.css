@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -45,84 +46,88 @@
 :root {
   --radius: 0.875rem;
 
-  /* Clean white background with purple accents */
-  --background: oklch(1 0 0);
-  --surface: #d4dcd1;
-  --surface-elevated: oklch(1 0 0);
-  --foreground: oklch(0.2 0.04 270);
-  --ink: oklch(0.12 0.04 270);
+  /* Color Palette */
+  --background: #F7FAF8;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --foreground: #0F2E21;
+  --ink: #0F2E21;
 
-  --card: oklch(1 0 0);
-  --card-foreground: #2e8b3f9a;
-  --popover: oklch(1 0 0);
-  --popover-foreground: #2e8b3f9a;
+  --card: #ffffff;
+  --card-foreground: #0F2E21;
+  --popover: #ffffff;
+  --popover-foreground: #0F2E21;
 
-  /* Deep purple primary */
-  --primary: #005B38;
-  --primary-foreground: oklch(0.98 0.012 85);
-  --primary-glow: #2E8B3F;
+  /* Primary Brand */
+  --primary: #006B3C;
+  --primary-foreground: #ffffff;
+  --primary-glow: #3FAE49;
 
-  --secondary: oklch(0.94 0.018 270);
-  --secondary-foreground: #005B38;
+  /* Secondary Green */
+  --secondary: #3FAE49;
+  --secondary-foreground: #ffffff;
 
-  --muted: oklch(0.95 0.014 270);
-  --muted-foreground: oklch(0.5 0.025 270);
+  --muted: #e6e9e7;
+  --muted-foreground: #707070; /* Tagline Gray */
 
-  /* Purple accent */
-  --accent: #5FAF3A;  --accent-foreground: oklch(0.98 0.012 85);
-  --accent-soft: oklch(0.93 0.08 280);
+  /* Accent Green */
+  --accent: #72D572;
+  --accent-foreground: #0F2E21;
+  --accent-soft: #eaf8ea;
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0.003 85);
 
-  --border: oklch(0.92 0.02 270);
-  --input: oklch(0.92 0.02 270);
-  --ring: #2E8B3F;
+  --border: #e0e5e2;
+  --input: #e0e5e2;
+  --ring: #3FAE49;
 
-  --gradient-hero: radial-gradient(ellipse at top right, #5faf3a4b, transparent 50%),
-    radial-gradient(ellipse at bottom left, oklch(86.808% 0.0931 119.511 / 0.299), transparent 50%),
-    linear-gradient(180deg, oklch(1 0 0), oklch(0.98 0.01 270));
-  --gradient-primary: linear-gradient(135deg, #0A6A3F, #2E8B3F);
-  --gradient-accent: linear-gradient(135deg,#5FAF3A, #005B38);
-  --gradient-ink: linear-gradient(180deg, #2e8b3f9a, #2e8b3fbc);
+  /* Simplified Static Background instead of moving */
+  --gradient-hero: linear-gradient(180deg, #eaf8ea 0%, #F7FAF8 100%);
+  --gradient-primary: linear-gradient(135deg, #006B3C, #3FAE49);
+  --gradient-accent: linear-gradient(135deg, #72D572, #3FAE49);
+  --gradient-ink: linear-gradient(180deg, #0F2E21, #1a4d37);
 
-  --shadow-soft: 0 1px 2px #0f281d0a, 0 8px 24px -8px #0f281d0a;
-  --shadow-elevated: 0 2px 4px #0f281d0a, 0 20px 50px -12px #0f281d0a;
-  --shadow-glow: 0 20px 80px -20px #0c86578f;
+  --shadow-soft: 0 4px 20px rgba(0, 107, 60, 0.05);
+  --shadow-elevated: 0 10px 30px rgba(0, 107, 60, 0.1);
+  --shadow-glow: 0 10px 40px rgba(63, 174, 73, 0.2);
 }
 
 .dark {
-  --background: #0f281d0a;
-  --surface: #0f281d27;
-  --surface-elevated: #0f281d25;
-  --foreground: oklch(0.96 0.012 85);
-  --ink: oklch(0.98 0.012 85);
+  --background: #0F2E21;
+  --surface: #143d2c;
+  --surface-elevated: #1a4d37;
+  --foreground: #F7FAF8;
+  --ink: #F7FAF8;
 
-  --card: #0f281d27;
-  --card-foreground: oklch(0.96 0.012 85);
-  --popover: #0f281d27;
-  --popover-foreground: oklch(0.96 0.012 85);
+  --card: #143d2c;
+  --card-foreground: #F7FAF8;
+  --popover: #143d2c;
+  --popover-foreground: #F7FAF8;
 
-  --primary: oklch(0.95 0.012 85);
-  --primary-foreground: #0f281d27;
-  --primary-glow: #5FAF3A;
+  --primary: #3FAE49;
+  --primary-foreground: #0F2E21;
+  --primary-glow: #72D572;
 
-  --secondary: #1d443327;
-  --secondary-foreground: oklch(0.96 0.012 85);
-  --muted: #1d443327;
-  --muted-foreground: oklch(0.72 0.025 260);
-  --accent: oklch(0.78 0.17 50);
-  --accent-foreground: #1d443327;
-  --accent-soft: oklch(0.32 0.08 50);
+  --secondary: #006B3C;
+  --secondary-foreground: #F7FAF8;
+  --muted: #1a4d37;
+  --muted-foreground: #9ca3af;
+  --accent: #72D572;
+  --accent-foreground: #0F2E21;
+  --accent-soft: #1e5c42;
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: #5FAF3A;
+  --border: #266b4e;
+  --input: #266b4e;
+  --ring: #72D572;
 }
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { -webkit-font-smoothing: antialiased; }
+  html { 
+    -webkit-font-smoothing: antialiased; 
+    scroll-behavior: smooth; /* Scrolling effect */
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -139,32 +144,48 @@
 @layer components {
   .container-x { @apply mx-auto w-full max-w-7xl px-6 lg:px-10; }
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-wider;
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-wider transition-all;
     border-color: var(--color-border);
     background: var(--color-surface);
-    color: var(--color-muted-foreground);
+    color: var(--color-primary);
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300;
     background: var(--gradient-primary);
     color: var(--color-primary-foreground);
     box-shadow: var(--shadow-glow);
   }
-  .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .btn-primary:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 15px 45px rgba(63, 174, 73, 0.3);
+  }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-colors;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300;
     border-color: var(--color-border);
     background: var(--color-surface-elevated);
     color: var(--color-foreground);
   }
-  .btn-ghost:hover { background: var(--color-secondary); }
+  .btn-ghost:hover { 
+    background: var(--color-accent-soft); 
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
   .card-soft {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
   }
-  .hero-bg { background: var(--gradient-hero); }
+  .card-soft:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+    border-color: var(--color-accent);
+  }
+  .hero-bg { 
+    background: var(--gradient-hero); 
+  }
   .text-gradient {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -173,76 +194,19 @@
   }
   .grid-bg {
     background-image:
-      linear-gradient(to right, #134b3227 1px, transparent 1px),
-      linear-gradient(to bottom, #1f563d27 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 107, 60, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 107, 60, 0.05) 1px, transparent 1px);
     background-size: 44px 44px;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
   }
 }
 
 @layer utilities {
-  /* Fade in animations */
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes pulseSlow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
-
-  /* Animation classes */
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
@@ -253,90 +217,21 @@
     opacity: 0;
   }
 
-  .animate-fade-in-down {
-    animation: fadeInDown 0.6s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-left {
-    animation: fadeInLeft 0.6s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-right {
-    animation: fadeInRight 0.6s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseSlow 4s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow-delay {
-    animation: pulseSlow 4s ease-in-out 1s infinite;
-  }
-
-  /* Uiverse Cards */
-  @keyframes rotate-gradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
+  /* Uiverse Cards - removed moving gradient, replaced with hover effect */
   .uiverse-card {
     position: relative;
     border-radius: var(--radius-2xl);
     background: var(--color-surface-elevated);
     z-index: 1;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: visible;
-    isolation: isolate;
+    transition: all 0.3s ease;
     border: 1px solid var(--color-border);
-  }
-
-  .uiverse-card::before {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    z-index: -1;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0%,
-      transparent 30%,
-      var(--color-primary) 40%,
-      var(--color-accent) 50%,
-      var(--color-primary-glow) 60%,
-      transparent 70%,
-      transparent 100%
-    );
-    border-radius: calc(var(--radius-2xl) + 3px);
-    animation: rotate-gradient 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  .uiverse-card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    background: var(--color-background);
-    border-radius: calc(var(--radius-2xl) - 1px);
-    z-index: -1;
-    transition: all 0.3s;
+    overflow: hidden;
   }
 
   .uiverse-card:hover {
-    transform: translateY(-4px) scale(1.015);
-    box-shadow: 0 24px 60px -12px #0a6a3f86;
-    border-color: transparent;
-  }
-
-  .uiverse-card:hover::before {
-    opacity: 1;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+    border-color: var(--color-primary);
   }
 
   .uiverse-card-content {
@@ -351,7 +246,8 @@
   .dash-sidebar {
     width: 260px;
     min-height: 100vh;
-    background: linear-gradient(180deg, var(--color-primary), oklch(0.14 0.04 260));
+    background: var(--color-surface-elevated);
+    border-right: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -365,21 +261,20 @@
     border-radius: 12px;
     font-size: 0.875rem;
     font-weight: 500;
-    color: oklch(1 0 0 / 70%);
+    color: var(--color-muted-foreground);
     transition: all 0.2s;
     cursor: pointer;
     text-decoration: none;
   }
 
   .dash-nav-item:hover {
-    background: oklch(1 0 0 / 10%);
-    color: white;
+    background: var(--color-accent-soft);
+    color: var(--color-primary);
   }
 
   .dash-nav-item.active {
-    background: oklch(1 0 0 / 15%);
-    color: white;
-    font-weight: 600;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
   }
 
   .dash-stat-card {
@@ -387,10 +282,13 @@
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-soft);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
   }
 
   .dash-stat-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-elevated);
+    border-color: var(--color-primary);
   }
 }

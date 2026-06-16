@@ -1,15 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "react-router-dom";
 import {
   LifeBuoy, Inbox, Clock, CheckCircle2, AlertTriangle,
   Search, Bell, Settings, Filter, LayoutList, MessageSquare,
   MoreVertical, Plus, UserCircle, Tag, Globe, Sun
 } from 'lucide-react';
 
-export const Route = createFileRoute('/modules/desk/dashboard')({
-  component: DeskDashboard,
-});
 
-function DeskDashboard() {
+
+export default function DeskDashboard() {
   return (
     <div className="flex h-screen bg-background overflow-hidden">
       {/* Sidebar - hidden on mobile */}
